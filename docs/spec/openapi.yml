@@ -24,7 +24,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListCountryResponse"
+                $ref: "#/components/schemas/ListCountry"
         "400":
           description: Invalid request or response.
           content:
@@ -151,7 +151,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ListAddressResponse'
+              $ref: '#/components/schemas/ListAddress'
       responses:
         "200":
           description: Successful response.
@@ -259,7 +259,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListApplicationResponse"
+                $ref: "#/components/schemas/ListApplication"
         "400":
           description: Invalid request or response.
           content:
@@ -412,7 +412,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListDocumentResponse"
+                $ref: "#/components/schemas/ListDocument"
         "400":
           description: Invalid request or response.
           content:
@@ -570,7 +570,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListDriverResponse"
+                $ref: "#/components/schemas/ListDriver"
         "400":
           description: Error with the submitted request.
           content:
@@ -799,7 +799,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListDriverResponse"
+                $ref: "#/components/schemas/ListDriver"
         "400":
           description: Error with the submitted request.
           content:
@@ -829,7 +829,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListDocumentResponse"
+                $ref: "#/components/schemas/ListDocument"
         "400":
           description: Error with the submitted request.
           content:
@@ -895,7 +895,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListNoteResponse"
+                $ref: "#/components/schemas/ListNote"
         "400":
           description: Error with the submitted request.
           content:
@@ -947,7 +947,7 @@ paths:
 
 components:
   schemas:
-    ListCountryResponse:
+    ListCountry:
       description: "A structured response that enumerates all countries supported by the system. This can be used to populate selection lists or validate country data in user inputs."
       type: object
       properties:
@@ -1024,7 +1024,7 @@ components:
         stateProvName:
           type: string
           description: "The full name of the state or province, providing a clear and unambiguous reference for users and systems interacting with address information."
-    ListAddressResponse:
+    ListAddress:
       description: "A structured response payload containing an array of addresses. This schema facilitates the return of multiple address records in a single API response, typically used in search or list endpoints where multiple addresses need to be communicated."
       type: object
       properties:
@@ -1201,7 +1201,7 @@ components:
         - "regionCd"
         - "regionISOCd"
         - "verificationHash"
-    ListDocumentResponse:
+    ListDocument:
       description: "Encapsulates a response structure for API calls that return multiple documents, facilitating easy access to and manipulation of a collection of documents within the system."
       type: object
       properties:
@@ -1366,7 +1366,7 @@ components:
         tagTemplateIdRef:
           type: string
           description: "The reference ID to a predefined tag template from which this tag was created, if applicable. Tag templates facilitate the standardization of tags across the system, ensuring consistency in tagging conventions and metadata application."
-    ListDriverResponse:
+    ListDriver:
       description: "Encapsulates a paginated response structure that contains a list of drivers, including relevant metadata to handle continuation of listing if more drivers exist beyond the current response set."
       type: object
       properties:
@@ -1850,7 +1850,7 @@ components:
           type: boolean
           default: true
           description: "Indicates whether the question is currently set to be visible to the user, allowing for conditional display based on context or previous answers."
-    ListApplicationResponse:
+    ListApplication:
       description: "Encapsulates a response that includes a list of insurance applications, potentially spanning multiple pages, along with pagination control via a continuation identifier."
       type: object
       properties:
@@ -2881,7 +2881,7 @@ components:
         workfareProgramWeeksNum:
           type: string
           description: "The number of weeks covered under a workfare program, applicable for policies including workfare participants."
-    ListNoteResponse:
+    ListNote:
       description: "Encapsulates a response that includes a list of notes associated with a specific entity, such as a policy or claim, providing a structured overview of textual annotations or reminders."
       type: object
       properties:
