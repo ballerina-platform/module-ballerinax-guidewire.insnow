@@ -699,7 +699,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error" 
     put:
-      operationId: changeDriverDetails
+      operationId: replaceDriverDetails
       description: Replaces the details about a driver or non-driver.
       parameters:
         - in: path
@@ -2189,7 +2189,7 @@ components:
           type: string
           description: "An identifier linking the electronic payment source to a customer profile, facilitating comprehensive customer payment management."
         eraseInfo:
-          type: object
+          $ref: '#/components/schemas/EraseInfo'
           description: "Contains details regarding the policies and procedures for erasing this payment source information, ensuring compliance with data protection laws."
         id:
           type: string
@@ -2524,7 +2524,7 @@ components:
           $ref: '#/components/schemas/EmailInfo'
           description: "Email contact information for the party, supporting electronic communication preferences and correspondence."
         eraseInfo:
-          type: object
+          $ref: '#/components/schemas/EraseInfo'
           description: "Details regarding data erasure requests or actions for the party's information, addressing privacy and regulatory compliance."
         id:
           type: string
