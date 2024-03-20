@@ -3582,17 +3582,17 @@ components:
           items:
             $ref: '#/components/schemas/WCCoveredState'
     Error:
-      description: Detailed information about an error.
+      description: "Detailed information about an error."
       type: object
       properties:
         code:
-          description: The HTTP status code.
+          description: "The HTTP status code."
           type: integer
         message:
-          description: A brief description of the error.
+          description: "A brief description of the error."
           type: string
         stackTrace:
-          description: Information about the error stack trace.
+          description: "Information about the error stack trace."
           type: string
       required:
         - code
