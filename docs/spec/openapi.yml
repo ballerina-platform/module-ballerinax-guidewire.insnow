@@ -944,6 +944,155 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"   
+  /policies:
+    get:
+      operationId: getPolicies
+      description: Returns a list of policies.
+      parameters:
+        - in: query
+          name: continuationId
+          description: Indicates the starting list value for the API results when you want to return a specific portion of the full results. You can use this parameter with the limit parameter. For example, if the limit on your first API call was 10 and the results populated a list on the page. To request the next page of 10 results, call the API again with continuationId=11 and limit=10.
+          schema:
+            type: string      
+        - in: query
+          name: createdSinceDate
+          description: Selects policies where policy creation date is equal to or greater than the provided createdSinceDate (e.g. 2020-01-01).
+          schema:
+            type: string
+        - in: query
+          name: customerId
+          description: Finds policies by customer id (e.g. 212).
+          schema:
+            type: string
+        - in: query
+          name: expiredDateAfter
+          description: Selects policies where policy expiration date is equal to or lesser than the provided expirationDateBefore (e.g. 2020-01-01).
+          schema:
+            type: string
+        - in: query
+          name: includePriorTerms
+          description: Includes prior terms.If true, results will include prior terms. If false (or not provided), results will not include prior terms.
+          schema:
+            type: boolean
+        - in: query
+          name: limit
+          description: Indicates how many results to return.
+          schema:
+            type: string
+        - in: query
+          name: optionalFields
+          description: Comma-delimited list of optional fields to be included. Currently supports customer and product.
+          schema:
+            type: string
+        - in: query
+          name: policyNumber
+          description: Finds policies by policyNumber (e.g. HO00000058).
+          schema:
+            type: string
+        - in: query
+          name: providerRef
+          description: Filters policies by provider identifier (e.g. 28).
+          schema:
+            type: string
+        - in: query
+          name: recentlyViewed
+          description: Limits policies to those recently viewed by the caller or user. If true, results will be restricted to policies recently viewed by the caller or user. If false (or not provided), results will not be restricted to policies recently viewed by the caller or user.
+          schema:
+            type: boolean
+        - in: query
+          name: status
+          description: Finds policies by policy status (e.g Active).
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful operation.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ListPolicy"
+        "400":
+          description: Invalid request or response.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: Unexpected error.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /policies/{systemId}:
+    get:
+      operationId: getPolicy
+      description: Returns the full details of a policy.
+      parameters:
+        - in: path
+          name: systemId
+          description: System identifier of the policy.
+          schema:
+            type: string
+          required: true
+        - in: query
+          name: asOfDate
+          description: Returns the policy details from a specified date (e.g. 2021-01-01). If not provided, the current date will be used.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful operation.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PolicyDetails"
+        "400":
+          description: Invalid request or response.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: Unexpected error.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"      
+    patch:
+      operationId: updatePolicy
+      description: Updates the preferred delivery method and insured email address of the policy. Requires the systemId.
+      parameters:
+        - in: path
+          name: systemId
+          description: System identifier of the policy.
+          schema:
+            type: string
+          required: true
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PolicyDetails'
+      responses:
+        "200":
+          description: Successful operation.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PolicyDetails"
+        "400":
+          description: Invalid request or response.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: Unexpected error.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
 
 components:
   schemas:
@@ -2113,19 +2262,177 @@ components:
       properties:
         affinityGroupCd:
           type: string
-          description: "A code that identifies the affinity group associated with the policy, which may qualify the policyholder for special rates or terms based on membership or affiliation."
         auditPayPlan:
           $ref: '#/components/schemas/AuditPayPlan'
-          description: "Details the payment plan as determined by an audit, including any adjustments to the standard payment schedule or method."
+        autoDataPrefillInd:
+          type: boolean
+        branch:
+          type: string
+        businessSourceCd:
+          type: string
+        cALineSelectedInd:
+          type: boolean
+        cAPolicyType:
+          type: string
+        cCLineSelectedInd:
+          type: boolean
+        cCPolicyType:
+          type: string
+        cCSubline:
+          type: string
+        cGLineSelectedInd:
+          type: boolean
+        cILineSelectedInd:
+          type: boolean
+        cLLineSelectedInd:
+          type: boolean
+        cPLineSelectedInd:
+          type: boolean
+        cPPolicyType:
+          type: string
+        carrierCd:
+          type: string
+        carrierGroupCd:
+          type: string
+        commCLUERequestInd:
+          type: boolean
+        comments:
+          type: string
+        companyProductCd:
+          type: string
+        controllingStateCd:
+          type: string
+        dPLineSelectedInd:
+          type: boolean
+        description:
+          type: string
+        directorsAndOfficersLineSelectedInd:
+          type: boolean
+        displayDescription:
+          type: string
+        effectiveDt:
+          type: string
+          format: date
+        effectiveTm:
+          type: string
+        electronicPaymentSource:
+          $ref: '#/components/schemas/ElectronicPaymentSource'
+        employmentAndPracticeLineSelectedInd:
+          type: boolean
+        errorsAndOmissionLineSelectedInd:
+          type: boolean
+        expirationDt:
+          type: string
+          format: date
+        extendedCoverageInd:
+          type: boolean
+        externalId:
+          type: string
+        fireLightningInd:
+          type: boolean
+        gLLineSelectedInd:
+          type: boolean
         id:
           type: string
-          description: "A unique identifier for the basic policy record, facilitating tracking and management within the system."
-        payPlanTemplateIdRef:
+        inceptionDt:
           type: string
-          description: "A reference to a template defining the standard payment plan for the policy, used as a basis before any audit adjustments."
+          format: date
+        inceptionTm:
+          type: string
+        legacyPolicyNumber:
+          type: string
+        llcOwnedDt:
+          type: string
+          format: date
+        lossSettlementType:
+          type: string
+        manualBillingEntitySplitInd:
+          type: boolean
+        manualReinstateInd:
+          type: boolean
+        manualReinstateReason:
+          type: string
+        manualRenewalInd:
+          type: boolean
+        manualRenewalReason:
+          type: string
+        namedNonOwnedInd:
+          type: boolean
+        oldSubTypeCd:
+          type: string
+        pLLineSelectedInd:
+          type: boolean
+        payPlanCd:
+          type: string
         paymentDay:
           type: string
-          description: "Specifies the day of the month on which payments are due under the policy's standard payment plan."
+        policySource:
+          type: string
+        policyType:
+          type: string
+        previousCarrierCd:
+          type: string
+        previousExpirationDt:
+          type: string
+          format: date
+        previousPolicyNumber:
+          type: string
+        previousPremium:
+          type: string
+        productTypeCd:
+          type: string
+        productVersionIdRef:
+          type: string
+        programCd:
+          type: string
+        promotionCd:
+          type: string
+        providerRef:
+          type: string
+        renewalProviderRef:
+          type: string
+        renewalSubProducerCd:
+          type: string
+        renewalTermCd:
+          type: string
+        sessionLink:
+          type: string
+        sicCode:
+          type: string
+        subProducerCd:
+          type: string
+        subTypeCd:
+          type: string
+        transactionCd:
+          type: string
+        transactionNumber:
+          type: integer
+          format: int64
+        transactionStatus:
+          type: string
+        umbrellaPolicyInfo:
+          $ref: '#/components/schemas/UmbrellaPolicyInfo'
+        underwriterCd:
+          type: string
+        underwritingHoldInd:
+          type: boolean
+        vandalismMaliciousMischiefInd:
+          type: boolean
+        wcARDRuleEnabled:
+          type: boolean
+        wcAnniversaryRatingDay:
+          type: string
+        wcPremiumDiscountTableTypeCd:
+          type: string
+    UmbrellaPolicyInfo:
+      type: object
+      properties:
+        id:
+          type: string
+        idRef:
+          type: string
+        policyNumber:
+          type: string
     AuditPayPlan:
       description: "Defines the payment plan for a policy as adjusted following an audit, which may result in changes to payment schedules or methods based on the audited information."
       type: object
@@ -3008,6 +3315,174 @@ components:
         templateId:
           type: string
           description: "The identifier of the template utilized for the document, indicating conformity to specific formats or standards."
+    ListPolicy:
+      type: object
+      properties:
+        continuationId: 
+          description: If more results are available, the ContinuationId should be the row index of the next row
+          type: string
+        policyListItems:
+          type: array
+          items:
+            $ref: '#/components/schemas/Policy'
+          description: "An array of policy items, each containing detailed information about individual policies."
+    Policy:
+      type: object
+      properties:
+        _links:
+          type: array
+          items:
+            $ref: '#/components/schemas/Link'
+          description: "Hypermedia links associated with the policy item, providing navigational URLs to related resources."
+        customerInfo:
+          $ref: '#/components/schemas/CustomerInfo'
+          description: "Detailed information about the customer associated with the policy."
+        policyMini:
+          $ref: '#/components/schemas/PolicyMini'
+          description: "A condensed version of the policy information, highlighting key details and references."
+        contacts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Contact'
+          description: "A collection of contacts related to the policy, including individuals and entities with various roles."
+        customerRef:
+          type: string
+          description: "A reference identifier linking to the customer information for additional context or action."
+        externalSystemInd:
+          type: string
+          description: "Indicates whether the policy is associated with an external system or process."
+        iVANSCheck:
+          type: string
+          description: "A status or result code from an IVANS check, related to insurance verification."
+        id:
+          type: string
+          description: "A unique identifier for the policy item within the list."
+        insured:
+          $ref: '#/components/schemas/Insured'
+          description: "Information about the insured entity or individual covered under the policy."
+        statementAccountRef:
+          type: string
+          description: "Reference to the statement account associated with the policy, for billing or financial tracking."
+        systemId:
+          type: string
+          description: "An identifier for the system or platform managing the policy."
+        version:
+          type: string
+          description: "The version of the policy data structure or format, indicating compatibility or revisions."
+        vipLevel:
+          type: string
+          description: "A code or status indicating the VIP level of the policy or associated customer, for prioritization or benefits."
+        productInfo:
+          $ref: '#/components/schemas/ProductInfo'
+          description: "General information about the product associated with the policy."
+        ref:
+          type: string
+          description: "A general reference identifier for the policy item, usable for cross-referencing or linkage."
+    PolicyMini:
+      type: object
+      description: "Provides a condensed overview of policy information, including key attributes and links for deeper exploration."
+      properties:
+        _links:
+          type: array
+          items:
+            $ref: '#/components/schemas/Link'
+          description: "A collection of hypermedia links to related resources, facilitating navigation and further actions."
+        accountRef:
+          type: string
+          description: "Reference identifier to the account associated with this policy, linking to account-specific details."
+        auditAccountRef:
+          type: string
+          description: "Reference to the audit account, if applicable, providing a connection to audit-related information and actions."
+        basicPolicy:
+          $ref: '#/components/schemas/BasicPolicy'
+          description: "Summarized information about the policy's basic attributes, including coverage details and policy-specific flags."
+        contacts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Contact'
+          description: "An array of contacts related to the policy, detailing individuals or entities associated in various capacities."
+        customerRef:
+          type: string
+          description: "A reference to the customer associated with the policy, enabling linkage to detailed customer information."
+        externalSystemInd:
+          type: string
+          description: "Indicator for the association of the policy with an external system, highlighting integrations or external dependencies."
+        iVANSCheck:
+          type: string
+          description: "Result or status from an IVANS insurance verification process, reflecting verification outcomes."
+        id:
+          type: string
+          description: "Unique identifier for the policy, facilitating identification and retrieval within the system."
+        insured:
+          $ref: '#/components/schemas/Insured'
+          description: "Details regarding the insured party or entity under the policy, outlining coverage and risk information."
+        statementAccountRef:
+          type: string
+          description: "Reference to the statement account related to the policy, used for financial transactions and billing."
+        systemId:
+          type: string
+          description: "System identifier that manages or tracks the policy, indicating the source or platform of policy management."
+        version:
+          type: string
+          description: "Version identifier for the policy information, denoting the format or structure level of the policy data."
+        vipLevel:
+          type: string
+          description: "Indicates the VIP level of the policy or associated customer, used for service prioritization or benefits."
+    PolicyDetails:
+      type: object
+      properties:
+        _links:
+          type: array
+          items:
+            $ref: '#/components/schemas/Link'
+          description: "Hypermedia links associated with the policy item, providing navigational URLs to related resources."
+        _revision:
+          type: string
+        accountRef: 
+          type: string
+        auditAccountRef:
+          type: string
+        basicPolicy:
+          $ref: '#/components/schemas/BasicPolicy'
+        contacts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Contact'
+          description: "A collection of contacts related to the policy, including individuals and entities with various roles."
+        customerRef:
+          type: string
+        externalSystemInd:
+          type: string
+        iVANSCheck:
+          type: string
+        id:
+          type: string
+        insured:
+          $ref: '#/components/schemas/Insured'
+        statementAccountRef:
+          type: string
+        systemId:
+          type: string
+        updateCount:
+          type: integer
+        updateTimestamp:
+          type: string
+        updateUser:
+          type: string
+        version:
+          type: string
+        vipLevel:
+          type: string
+        wcAdditionalInsureds:
+          description: "List of additional insured entities for workers' compensation policies, detailing parties other than the primary insured that receive coverage."
+          type: array
+          items:
+            $ref: '#/components/schemas/WCAdditionalInsured'
+        wcCoveredStates:
+          description: "A list of states in which workers' compensation coverage is included within the policy as proposed by this quote, reflecting multi-state operations and compliance."
+          type: array
+          items:
+            $ref: '#/components/schemas/WCCoveredState'
     Error:
       description: Detailed information about an error.
       type: object
