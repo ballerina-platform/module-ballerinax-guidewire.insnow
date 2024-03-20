@@ -2262,177 +2262,259 @@ components:
       properties:
         affinityGroupCd:
           type: string
+          description: "The code representing the affinity group associated with the policy, which may qualify the policyholder for certain benefits or discounts."
         auditPayPlan:
           $ref: '#/components/schemas/AuditPayPlan'
+          description: "Details the audit payment plan associated with the policy, including payment schedules and amounts."
         autoDataPrefillInd:
           type: boolean
+          description: "Indicator of whether data prefilling is enabled for automatic data capture and form completion."
         branch:
           type: string
+          description: "The branch or division of the insurance provider issuing the policy."
         businessSourceCd:
           type: string
+          description: "The code indicating the source of business, such as direct, broker, or agent."
         cALineSelectedInd:
           type: boolean
+          description: "Indicator of whether commercial auto line coverage is selected in the policy."
         cAPolicyType:
           type: string
+          description: "The type of commercial auto policy, detailing specific coverage options selected."
         cCLineSelectedInd:
           type: boolean
+          description: "Indicator of whether commercial property coverage is selected."
         cCPolicyType:
           type: string
+          description: "The type of commercial property policy, detailing the specific coverage options selected."
         cCSubline:
           type: string
+          description: "Subline code for commercial coverage, providing additional detail on the specific nature of the coverage."
         cGLineSelectedInd:
           type: boolean
+          description: "Indicator of whether general liability coverage is selected."
         cILineSelectedInd:
           type: boolean
+          description: "Indicator of whether commercial inland marine coverage is selected."
         cLLineSelectedInd:
           type: boolean
+          description: "Indicator of whether commercial lines coverage is selected, encompassing a range of commercial policies."
         cPLineSelectedInd:
           type: boolean
+          description: "Indicator of whether commercial package policy coverage is selected."
         cPPolicyType:
           type: string
+          description: "The type of commercial package policy, detailing the specific coverage options selected."
         carrierCd:
           type: string
+          description: "The code representing the insurance carrier providing the policy."
         carrierGroupCd:
           type: string
+          description: "The code representing the group of insurance carriers, if applicable, under which the policy is issued."
         commCLUERequestInd:
           type: boolean
+          description: "Indicator of whether a commercial CLUE (Comprehensive Loss Underwriting Exchange) report has been requested for underwriting purposes."
         comments:
           type: string
+          description: "Free-form comments or notes associated with the policy."
         companyProductCd:
           type: string
+          description: "The product code of the company, identifying the specific insurance product offered."
         controllingStateCd:
           type: string
+          description: "The code of the state that has jurisdiction over the policy, particularly important for multi-state operations."
         dPLineSelectedInd:
           type: boolean
+          description: "Indicator of whether dwelling property coverage is selected."
         description:
           type: string
+          description: "A brief description of the policy, summarizing the key coverage and policy details."
         directorsAndOfficersLineSelectedInd:
           type: boolean
+          description: "Indicator of whether Directors and Officers (D&O) liability coverage is selected."
         displayDescription:
           type: string
+          description: "A description of the policy designed for display purposes, often used in customer-facing documents."
         effectiveDt:
           type: string
           format: date
+          description: "The effective date of the policy, indicating when coverage begins."
         effectiveTm:
           type: string
+          description: "The effective time of the policy, providing precise coverage start time."
         electronicPaymentSource:
           $ref: '#/components/schemas/ElectronicPaymentSource'
+          description: "Details regarding the source of electronic payments for the policy."
         employmentAndPracticeLineSelectedInd:
           type: boolean
+          description: "Indicator of whether employment practices liability coverage is selected."
         errorsAndOmissionLineSelectedInd:
           type: boolean
+          description: "Indicator of whether Errors and Omissions (E&O) coverage is selected."
         expirationDt:
           type: string
           format: date
+          description: "The expiration date of the policy, indicating when coverage ends."
         extendedCoverageInd:
           type: boolean
+          description: "Indicator of whether the policy includes extended coverage beyond standard terms."
         externalId:
           type: string
+          description: "An external identifier for the policy, used for integration with external systems or databases."
         fireLightningInd:
           type: boolean
+          description: "Indicator of whether the policy includes coverage for fire and lightning damage."
         gLLineSelectedInd:
           type: boolean
+          description: "Indicator of whether general liability coverage is selected."
         id:
           type: string
+          description: "The unique identifier for the policy within the system."
         inceptionDt:
           type: string
           format: date
+          description: "The inception date of the policy, marking the beginning of coverage, distinct from the effective date in some cases."
         inceptionTm:
           type: string
+          description: "The inception time of the policy, providing precise start time of coverage."
         legacyPolicyNumber:
           type: string
+          description: "A policy number from a legacy system, maintained for historical or cross-reference purposes."
         llcOwnedDt:
           type: string
           format: date
+          description: "The date on which the covered property was transferred to an LLC, if applicable."
         lossSettlementType:
           type: string
+          description: "The type of loss settlement provided by the policy, such as actual cash value or replacement cost."
         manualBillingEntitySplitInd:
           type: boolean
+          description: "Indicator of whether the billing for the policy is manually split among multiple entities."
         manualReinstateInd:
           type: boolean
+          description: "Indicator of whether the policy has been manually reinstated after cancellation or lapse."
         manualReinstateReason:
           type: string
+          description: "The reason for manually reinstating the policy, providing context for the action."
         manualRenewalInd:
           type: boolean
+          description: "Indicator of whether the policy is manually renewed, as opposed to automatically renewed."
         manualRenewalReason:
           type: string
+          description: "The reason for manually renewing the policy, providing context for the renewal decision."
         namedNonOwnedInd:
           type: boolean
+          description: "Indicator of whether the policy includes coverage for named non-owned vehicles or properties."
         oldSubTypeCd:
           type: string
+          description: "A legacy sub-type code for the policy, maintained for historical or compatibility purposes."
         pLLineSelectedInd:
           type: boolean
+          description: "Indicator of whether personal lines coverage is selected, identifying if the policy includes insurance products designed for individuals and families, such as personal auto, homeowners, or personal umbrella coverage."
         payPlanCd:
           type: string
+          description: "The code identifying the payment plan associated with the policy, dictating the schedule and method of premium payments."
         paymentDay:
           type: string
+          description: "Specifies the day of the month on which recurring payments are due for the policy."
         policySource:
           type: string
+          description: "Identifies the origin of the policy, such as an online application, agent submission, or broker referral."
         policyType:
           type: string
+          description: "Defines the type of insurance policy, such as auto, homeowners, commercial, etc., categorizing the policy for administrative and product-specific purposes."
         previousCarrierCd:
           type: string
+          description: "The code of the insurance carrier that issued the previous policy, used for history tracking and risk assessment."
         previousExpirationDt:
           type: string
           format: date
+          description: "The expiration date of the policyholder's previous insurance policy, important for underwriting and continuity of coverage considerations."
         previousPolicyNumber:
           type: string
+          description: "The policy number of the policyholder's previous insurance policy, used for reference and transferring information."
         previousPremium:
           type: string
+          description: "The premium amount paid for the previous policy period, used for underwriting and pricing analysis."
         productTypeCd:
           type: string
+          description: "The code representing the specific insurance product type, facilitating product management and policy administration."
         productVersionIdRef:
           type: string
+          description: "A reference to the version ID of the insurance product, ensuring that the policy aligns with the correct product specifications and terms."
         programCd:
           type: string
+          description: "The code identifying the insurance program under which the policy is issued, often related to specialized markets or groupings of policies."
         promotionCd:
           type: string
+          description: "The code for any promotional offers or discounts applied to the policy, used for marketing and billing purposes."
         providerRef:
           type: string
+          description: "A reference identifier for the provider or originator of the policy, such as an agent, broker, or direct application system."
         renewalProviderRef:
           type: string
+          description: "A reference identifier for the provider managing the renewal of the policy, which may differ from the original issuing provider."
         renewalSubProducerCd:
           type: string
+          description: "The code for the sub-producer responsible for the renewal of the policy, part of the distribution channel management."
         renewalTermCd:
           type: string
+          description: "The code representing the term for the policy renewal, dictating the duration and conditions for the renewed coverage period."
         sessionLink:
           type: string
+          description: "A URL or identifier linking to the session or transaction where the policy was created or modified, for audit and tracking purposes."
         sicCode:
           type: string
+          description: "The Standard Industrial Classification (SIC) code associated with the policyholder's primary business activity, used for underwriting and risk assessment."
         subProducerCd:
           type: string
+          description: "The code identifying the sub-producer or agent responsible for the policy, part of the distribution and sales network."
         subTypeCd:
           type: string
+          description: "A more specific classification within the overall policy type, providing further detail on the coverage or policy structure."
         transactionCd:
           type: string
+          description: "The code representing the type of transaction (e.g., new business, renewal, endorsement) that the policy record is associated with."
         transactionNumber:
           type: integer
           format: int64
+          description: "A unique identifier for the transaction involving the policy, used for tracking and auditing purposes."
         transactionStatus:
           type: string
+          description: "Indicates the current status of the policy transaction, such as pending, completed, or canceled."
         umbrellaPolicyInfo:
           $ref: '#/components/schemas/UmbrellaPolicyInfo'
+          description: "Details of any associated umbrella policy, providing extended liability coverage beyond the primary policy limits."
         underwriterCd:
           type: string
+          description: "The code identifying the underwriter responsible for the policy, critical for risk management and policy approval processes."
         underwritingHoldInd:
           type: boolean
+          description: "Indicator of whether the policy is currently on hold due to underwriting review, awaiting additional information or decision."
         vandalismMaliciousMischiefInd:
           type: boolean
+          description: "Indicator of whether the policy includes coverage for vandalism and malicious mischief, protecting against specific types of property damage."
         wcARDRuleEnabled:
           type: boolean
+          description: "Indicator of whether the workers' compensation Average Rate Differential (ARD) rule is enabled, affecting premium calculations."
         wcAnniversaryRatingDay:
           type: string
+          description: "The day on which the workers' compensation policy's rating and premium are reassessed annually, important for policy management and pricing."
         wcPremiumDiscountTableTypeCd:
           type: string
+          description: "The code for the type of premium discount table applied to the workers' compensation policy, affecting discounts for larger premium volumes."
     UmbrellaPolicyInfo:
       type: object
       properties:
         id:
           type: string
+          description: "The unique identifier for the umbrella policy, used to uniquely distinguish this policy from others within the system."
         idRef:
           type: string
+          description: "A reference identifier that links this umbrella policy to related records or entities within the system, facilitating cross-referencing and data integrity."
         policyNumber:
           type: string
+          description: "The policy number assigned to the umbrella policy, serving as a human-readable identifier that is often used in documentation and communications."
     AuditPayPlan:
       description: "Defines the payment plan for a policy as adjusted following an audit, which may result in changes to payment schedules or methods based on the audited information."
       type: object
@@ -3438,12 +3520,16 @@ components:
           description: "Hypermedia links associated with the policy item, providing navigational URLs to related resources."
         _revision:
           type: string
-        accountRef: 
+          description: "The revision identifier of the policy, used for tracking changes and ensuring data consistency."
+        accountRef:
           type: string
+          description: "A reference identifier linking the policy to a specific account in the system."
         auditAccountRef:
           type: string
+          description: "Reference identifier for the account associated with any audits related to the policy."
         basicPolicy:
           $ref: '#/components/schemas/BasicPolicy'
+          description: "A reference to the basic policy schema, encapsulating core policy details."
         contacts:
           type: array
           items:
@@ -3451,28 +3537,40 @@ components:
           description: "A collection of contacts related to the policy, including individuals and entities with various roles."
         customerRef:
           type: string
+          description: "A reference identifier for the customer associated with the policy."
         externalSystemInd:
           type: string
+          description: "Indicator flag signifying if the policy is synchronized with an external system."
         iVANSCheck:
           type: string
+          description: "Status of the IVANS check for the policy, indicating connectivity and data exchange success with the IVANS network."
         id:
           type: string
+          description: "The unique identifier of the policy within the system."
         insured:
           $ref: '#/components/schemas/Insured'
+          description: "A reference to the schema detailing the insured parties under the policy."
         statementAccountRef:
           type: string
+          description: "Reference identifier for the account associated with billing statements for the policy."
         systemId:
           type: string
+          description: "An identifier for the policy within the internal or external systems, facilitating cross-reference."
         updateCount:
           type: integer
+          description: "A counter indicating the number of times the policy has been updated."
         updateTimestamp:
           type: string
+          description: "The timestamp of the last update made to the policy, formatted in ISO 8601."
         updateUser:
           type: string
+          description: "Identifier of the user who last updated the policy, used for audit trails and accountability."
         version:
           type: string
+          description: "The version number of the policy, used for version control and history tracking."
         vipLevel:
           type: string
+          description: "The VIP level assigned to the policy or policyholder, indicating priority or special handling requirements."
         wcAdditionalInsureds:
           description: "List of additional insured entities for workers' compensation policies, detailing parties other than the primary insured that receive coverage."
           type: array
