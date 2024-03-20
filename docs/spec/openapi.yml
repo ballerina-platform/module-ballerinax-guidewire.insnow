@@ -3398,6 +3398,7 @@ components:
           type: string
           description: "The identifier of the template utilized for the document, indicating conformity to specific formats or standards."
     ListPolicy:
+      description: "Provides a paginated structure for listing policies, facilitating the retrieval of policy information in a segmented manner. This schema supports operations that require the listing of multiple policies, including search results and batch processing views."
       type: object
       properties:
         continuationId: 
@@ -3409,6 +3410,7 @@ components:
             $ref: '#/components/schemas/Policy'
           description: "An array of policy items, each containing detailed information about individual policies."
     Policy:
+      description: "Represents a comprehensive view of an insurance policy, including customer details, policy specifics, associated contacts, and system references. It's designed to encapsulate all relevant information about a policy, facilitating easy access and management within the system."
       type: object
       properties:
         _links:
@@ -3511,6 +3513,7 @@ components:
           type: string
           description: "Indicates the VIP level of the policy or associated customer, used for service prioritization or benefits."
     PolicyDetails:
+      description: "Encapsulates detailed information about an individual policy, including identification, related entities, and status indicators. This schema serves as a comprehensive model for policy information, integrating with both internal and external systems for full lifecycle management."
       type: object
       properties:
         _links:
