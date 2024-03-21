@@ -22,6 +22,7 @@ import ballerina/http;
 # This OpenAPI specification outlines the interface for the Guidewire InsuranceNow Cloud API version 5.0.0, providing a comprehensive description of available endpoints, operations, parameters, request bodies, and response structures for integrating with the cloud-based insurance platform, InsuranceNow. Designed to streamline operations for insurance companies, InsuranceNow offers functionalities including policy management, claims management, and customer engagement. The API enables developers to access and manipulate insurance data, facilitating automation, custom integrations, and workflow enhancements. Key features include policy management, claims processing, and customer management.
 public isolated client class Client {
     final http:Client clientEp;
+
     # Gets invoked to initialize the `connector`.
     #
     # + config - The configurations to be used when initializing the `connector` 
@@ -54,6 +55,7 @@ public isolated client class Client {
         self.clientEp = httpEp;
         return;
     }
+
     # Returns a list of supported countries.
     #
     # + sortType - Indicates the method used to sort the results by name.
@@ -65,6 +67,7 @@ public isolated client class Client {
         ListCountry response = check self.clientEp->get(resourcePath);
         return response;
     }
+
     # Returns the AddressCountryTemplate bean for the given IsoCd (e.g. US).
     #
     # + isoCd - ISO Country code.
@@ -74,6 +77,7 @@ public isolated client class Client {
         AddressCountryTemplate response = check self.clientEp->get(resourcePath);
         return response;
     }
+
     # Fills an address from a Google Places search. Using the placeId from a Google Places search, an address will be returned that has all of the address components filled. If the placeId is not known, Google Places will be called to search and fill the address components.
     #
     # + addressLine - The address line to have Google Places search and fill the address components.
@@ -86,6 +90,7 @@ public isolated client class Client {
         Address response = check self.clientEp->get(resourcePath);
         return response;
     }
+
     # Indicates whether a given address is already verified.
     #
     # + return - Successful response. 
@@ -97,6 +102,7 @@ public isolated client class Client {
         http:Response response = check self.clientEp->post(resourcePath, request);
         return response;
     }
+
     # Normalizes, verifies, and provides a more complete address. The verified address may include additional address properties. The response either returns one or more addresses that match the given address, or it will return an error if the address cannot be verified. If more than one address is returned, select an address and then resubmit the API request to perform address verification on the selected address.
     #
     # + addressType - Indicates the requested format of the address after verification. Uncombined returns the street address in components. The default is Combined.
@@ -111,6 +117,7 @@ public isolated client class Client {
         http:Response response = check self.clientEp->post(resourcePath, request);
         return response;
     }
+    
     # Returns a list of quotes or applications.
     #
     # + applicationOrQuoteNumber - Application or quote number.
@@ -136,6 +143,7 @@ public isolated client class Client {
         ListApplication response = check self.clientEp->get(resourcePath);
         return response;
     }
+
     # Starts a new QuickQuote or Quote. To create a QuickQuote, basicPolicy productVersionIdRef (e.g. Homeowners-1.00.00), providerRef (e.g. 19), and effectiveDt strings are required. To create a Quote, basicPolicy productVersionIdRef, providerRef, and effectiveDt strings, plus one piece of insured information to create a customer, are required.
     #
     # + requestedTypeCd - Starts a quote of the specified type. Valid values are QuickQuote or Quote. If a type is not specified, a QuickQuote will be created if the selected product supports quick quotes and you can perform quick quotes; otherwise, a Quote will be created. If QuickQuote is specified but the selected product does not support quick quotes or you cannot perform quick quotes, then either a 400 or 403 response code will be returned.
@@ -150,6 +158,7 @@ public isolated client class Client {
         http:Response response = check self.clientEp->post(resourcePath, request);
         return response;
     }
+
     # Delete the quote or application.
     #
     # + systemId - System identifier of the quote or application.
@@ -159,6 +168,7 @@ public isolated client class Client {
         http:Response response = check self.clientEp->delete(resourcePath);
         return response;
     }
+
     # Converts a quote to an application.
     #
     # + systemId - System identifier of the quote.
@@ -169,6 +179,7 @@ public isolated client class Client {
         http:Response response = check self.clientEp->post(resourcePath, request);
         return response;
     }
+
     # Converts a QuickQuote to a Quote.
     #
     # + systemId - System identifier of the quote.
@@ -179,6 +190,7 @@ public isolated client class Client {
         http:Response response = check self.clientEp->post(resourcePath, request);
         return response;
     }
+
     # Returns a list of documents for a quote or application.
     #
     # + systemId - System identifier of the application.
@@ -188,6 +200,7 @@ public isolated client class Client {
         ListDocument response = check self.clientEp->get(resourcePath);
         return response;
     }
+
     # Adds an attachment to a quote or application.
     #
     # + systemId - System identifier of the application.
@@ -200,6 +213,7 @@ public isolated client class Client {
         http:Response response = check self.clientEp->post(resourcePath, request);
         return response;
     }
+
     # Deletes an attachment associated with a quote or application. Requires the attachment ref number (e.g. "Attachment-26808155-290885540").
     #
     # + systemId - System identifier of the application.
@@ -210,6 +224,7 @@ public isolated client class Client {
         http:Response response = check self.clientEp->delete(resourcePath);
         return response;
     }
+
     # Downloads a document for a quote or application. Requires the attachment ref number (e.g. "Attachment-26808155-290885540").
     #
     # + systemId - System identifier of the application.
@@ -220,6 +235,7 @@ public isolated client class Client {
         byte[] response = check self.clientEp->get(resourcePath);
         return response;
     }
+
     # Returns a list of the drivers or non-drivers of a quote or application.
     #
     # + systemId - System identifier of the quote or application.
@@ -235,6 +251,7 @@ public isolated client class Client {
         ListDriver response = check self.clientEp->get(resourcePath);
         return response;
     }
+
     # Creates a new driver or non-driver. You must include a partyTypeCd (DriverParty or NonDriverParty). Other details may be required depending on the insurance product being quoted.
     #
     # + systemId - System identifier of the quote or application.
@@ -247,6 +264,7 @@ public isolated client class Client {
         http:Response response = check self.clientEp->post(resourcePath, request);
         return response;
     }
+
     # Returns details about a driver or non-driver.
     #
     # + systemId - System identifier of the quote or application.
@@ -257,6 +275,7 @@ public isolated client class Client {
         Driver response = check self.clientEp->get(resourcePath);
         return response;
     }
+
     # Replaces the details about a driver or non-driver.
     #
     # + systemId - System identifier of the quote or application.
@@ -270,6 +289,7 @@ public isolated client class Client {
         Driver response = check self.clientEp->put(resourcePath, request);
         return response;
     }
+
     # Deletes a driver/non-driver.
     #
     # + systemId - System identifier of the quote or application.
@@ -280,6 +300,7 @@ public isolated client class Client {
         http:Response response = check self.clientEp->delete(resourcePath);
         return response;
     }
+
     # Makes changes to details about a driver/non-driver.
     #
     # + systemId - System identifier of the quote or application.
@@ -293,6 +314,7 @@ public isolated client class Client {
         Driver response = check self.clientEp->patch(resourcePath, request);
         return response;
     }
+
     # Returns a list of the lines-of-business of a quote or application.
     #
     # + systemId - System identifier of the quote or application.
@@ -306,6 +328,7 @@ public isolated client class Client {
         ListDriver response = check self.clientEp->get(resourcePath);
         return response;
     }
+
     # Returns the list of documents attached to a claim.
     #
     # + systemId - System identifier of the claim.
@@ -315,6 +338,7 @@ public isolated client class Client {
         ListDocument response = check self.clientEp->get(resourcePath);
         return response;
     }
+
     # Adds an attachment to a claim.
     #
     # + systemId - System identifier of the claim.
@@ -327,6 +351,7 @@ public isolated client class Client {
         http:Response response = check self.clientEp->post(resourcePath, request);
         return response;
     }
+
     # Returns a list of notes for a claim.
     #
     # + systemId - System identifier of the claim.
@@ -336,6 +361,7 @@ public isolated client class Client {
         ListNote response = check self.clientEp->get(resourcePath);
         return response;
     }
+
     # Adds a note to a claim.
     #
     # + systemId - System identifier of the claim.
@@ -348,6 +374,7 @@ public isolated client class Client {
         http:Response response = check self.clientEp->post(resourcePath, request);
         return response;
     }
+    
     # Returns a list of policies.
     #
     # + continuationId - Indicates the starting list value for the API results when you want to return a specific portion of the full results. You can use this parameter with the limit parameter. For example, if the limit on your first API call was 10 and the results populated a list on the page. To request the next page of 10 results, call the API again with continuationId=11 and limit=10.
@@ -369,6 +396,7 @@ public isolated client class Client {
         ListPolicy response = check self.clientEp->get(resourcePath);
         return response;
     }
+
     # Returns the full details of a policy.
     #
     # + systemId - System identifier of the policy.
@@ -381,6 +409,7 @@ public isolated client class Client {
         PolicyDetails response = check self.clientEp->get(resourcePath);
         return response;
     }
+    
     # Updates the preferred delivery method and insured email address of the policy. Requires the systemId.
     #
     # + systemId - System identifier of the policy.
