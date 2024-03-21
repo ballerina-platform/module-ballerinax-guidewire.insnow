@@ -94,28 +94,26 @@ public isolated client class Client {
     # Indicates whether a given address is already verified.
     #
     # + return - Successful response. 
-    resource isolated function post addresses/isVerifiedRequest(Address payload) returns http:Response|error {
+    resource isolated function post addresses/isVerifiedRequest(Address payload) returns error? {
         string resourcePath = string `/addresses/isVerifiedRequest`;
         http:Request request = new;
         json jsonBody = payload.toJson();
         request.setPayload(jsonBody, "application/json");
-        http:Response response = check self.clientEp->post(resourcePath, request);
-        return response;
+        return self.clientEp->post(resourcePath, request);
     }
 
     # Normalizes, verifies, and provides a more complete address. The verified address may include additional address properties. The response either returns one or more addresses that match the given address, or it will return an error if the address cannot be verified. If more than one address is returned, select an address and then resubmit the API request to perform address verification on the selected address.
     #
     # + addressType - Indicates the requested format of the address after verification. Uncombined returns the street address in components. The default is Combined.
     # + return - Successful response. 
-    resource isolated function post addresses/verificationRequest(ListAddress payload, "Combined"|"Uncombined" addressType = "Combined") returns http:Response|error {
+    resource isolated function post addresses/verificationRequest(ListAddress payload, "Combined"|"Uncombined" addressType = "Combined") returns error? {
         string resourcePath = string `/addresses/verificationRequest`;
         map<anydata> queryParam = {"addressType": addressType};
         resourcePath = resourcePath + check getPathForQueryParam(queryParam);
         http:Request request = new;
         json jsonBody = payload.toJson();
         request.setPayload(jsonBody, "application/json");
-        http:Response response = check self.clientEp->post(resourcePath, request);
-        return response;
+        return self.clientEp->post(resourcePath, request);
     }
     
     # Returns a list of quotes or applications.
@@ -148,47 +146,43 @@ public isolated client class Client {
     #
     # + requestedTypeCd - Starts a quote of the specified type. Valid values are QuickQuote or Quote. If a type is not specified, a QuickQuote will be created if the selected product supports quick quotes and you can perform quick quotes; otherwise, a Quote will be created. If QuickQuote is specified but the selected product does not support quick quotes or you cannot perform quick quotes, then either a 400 or 403 response code will be returned.
     # + return - Successful response. 
-    resource isolated function post applications(Quote payload, string? requestedTypeCd = ()) returns http:Response|error {
+    resource isolated function post applications(Quote payload, string? requestedTypeCd = ()) returns error? {
         string resourcePath = string `/applications`;
         map<anydata> queryParam = {"requestedTypeCd": requestedTypeCd};
         resourcePath = resourcePath + check getPathForQueryParam(queryParam);
         http:Request request = new;
         json jsonBody = payload.toJson();
         request.setPayload(jsonBody, "application/json");
-        http:Response response = check self.clientEp->post(resourcePath, request);
-        return response;
+        return self.clientEp->post(resourcePath, request);
     }
 
     # Delete the quote or application.
     #
     # + systemId - System identifier of the quote or application.
     # + return - Successful operation. 
-    resource isolated function delete applications/[string systemId]() returns http:Response|error {
+    resource isolated function delete applications/[string systemId]() returns error? {
         string resourcePath = string `/applications/${getEncodedUri(systemId)}`;
-        http:Response response = check self.clientEp->delete(resourcePath);
-        return response;
+        return self.clientEp->delete(resourcePath);
     }
 
     # Converts a quote to an application.
     #
     # + systemId - System identifier of the quote.
     # + return - Successful response. 
-    resource isolated function post applications/[string systemId]/bindRequest() returns http:Response|error {
+    resource isolated function post applications/[string systemId]/bindRequest() returns error? {
         string resourcePath = string `/applications/${getEncodedUri(systemId)}/bindRequest`;
         http:Request request = new;
-        http:Response response = check self.clientEp->post(resourcePath, request);
-        return response;
+        return self.clientEp->post(resourcePath, request);
     }
 
     # Converts a QuickQuote to a Quote.
     #
     # + systemId - System identifier of the quote.
     # + return - Successful response. 
-    resource isolated function post applications/[string systemId]/convertToQuoteRequest() returns http:Response|error {
+    resource isolated function post applications/[string systemId]/convertToQuoteRequest() returns error? {
         string resourcePath = string `/applications/${getEncodedUri(systemId)}/convertToQuoteRequest`;
         http:Request request = new;
-        http:Response response = check self.clientEp->post(resourcePath, request);
-        return response;
+        return self.clientEp->post(resourcePath, request);
     }
 
     # Returns a list of documents for a quote or application.
@@ -205,13 +199,12 @@ public isolated client class Client {
     #
     # + systemId - System identifier of the application.
     # + return - Successful response. 
-    resource isolated function post applications/[string systemId]/documents(Attachment payload) returns http:Response|error {
+    resource isolated function post applications/[string systemId]/documents(Attachment payload) returns error? {
         string resourcePath = string `/applications/${getEncodedUri(systemId)}/documents`;
         http:Request request = new;
         json jsonBody = payload.toJson();
         request.setPayload(jsonBody, "application/json");
-        http:Response response = check self.clientEp->post(resourcePath, request);
-        return response;
+        return self.clientEp->post(resourcePath, request);
     }
 
     # Deletes an attachment associated with a quote or application. Requires the attachment ref number (e.g. "Attachment-26808155-290885540").
@@ -219,10 +212,9 @@ public isolated client class Client {
     # + systemId - System identifier of the application.
     # + documentId - The identifier of the document.
     # + return - Successful operation. 
-    resource isolated function delete applications/[string systemId]/documents/[string documentId]() returns http:Response|error {
+    resource isolated function delete applications/[string systemId]/documents/[string documentId]() returns error? {
         string resourcePath = string `/applications/${getEncodedUri(systemId)}/documents/${getEncodedUri(documentId)}`;
-        http:Response response = check self.clientEp->delete(resourcePath);
-        return response;
+        return self.clientEp->delete(resourcePath);
     }
 
     # Downloads a document for a quote or application. Requires the attachment ref number (e.g. "Attachment-26808155-290885540").
@@ -256,13 +248,12 @@ public isolated client class Client {
     #
     # + systemId - System identifier of the quote or application.
     # + return - Successful response. 
-    resource isolated function post applications/[string systemId]/drivers(Driver payload) returns http:Response|error {
+    resource isolated function post applications/[string systemId]/drivers(Driver payload) returns error? {
         string resourcePath = string `/applications/${getEncodedUri(systemId)}/drivers`;
         http:Request request = new;
         json jsonBody = payload.toJson();
         request.setPayload(jsonBody, "application/json");
-        http:Response response = check self.clientEp->post(resourcePath, request);
-        return response;
+        return self.clientEp->post(resourcePath, request);
     }
 
     # Returns details about a driver or non-driver.
@@ -295,10 +286,9 @@ public isolated client class Client {
     # + systemId - System identifier of the quote or application.
     # + driverNumber - Driver/non-driver number.
     # + return - Successful operation. 
-    resource isolated function delete applications/[string systemId]/drivers/[int:Signed32 driverNumber]() returns http:Response|error {
+    resource isolated function delete applications/[string systemId]/drivers/[int:Signed32 driverNumber]() returns error? {
         string resourcePath = string `/applications/${getEncodedUri(systemId)}/drivers/${getEncodedUri(driverNumber)}`;
-        http:Response response = check self.clientEp->delete(resourcePath);
-        return response;
+        return self.clientEp->delete(resourcePath);
     }
 
     # Makes changes to details about a driver/non-driver.
@@ -343,13 +333,12 @@ public isolated client class Client {
     #
     # + systemId - System identifier of the claim.
     # + return - Successful response. 
-    resource isolated function post claims/[string systemId]/documents(DocumentDetail payload) returns http:Response|error {
+    resource isolated function post claims/[string systemId]/documents(DocumentDetail payload) returns error? {
         string resourcePath = string `/claims/${getEncodedUri(systemId)}/documents`;
         http:Request request = new;
         json jsonBody = payload.toJson();
         request.setPayload(jsonBody, "application/json");
-        http:Response response = check self.clientEp->post(resourcePath, request);
-        return response;
+        return self.clientEp->post(resourcePath, request);
     }
 
     # Returns a list of notes for a claim.
@@ -366,13 +355,12 @@ public isolated client class Client {
     #
     # + systemId - System identifier of the claim.
     # + return - Successful response. 
-    resource isolated function post claims/[string systemId]/notes(NoteDetail payload) returns http:Response|error {
+    resource isolated function post claims/[string systemId]/notes(NoteDetail payload) returns error? {
         string resourcePath = string `/claims/${getEncodedUri(systemId)}/notes`;
         http:Request request = new;
         json jsonBody = payload.toJson();
         request.setPayload(jsonBody, "application/json");
-        http:Response response = check self.clientEp->post(resourcePath, request);
-        return response;
+        return self.clientEp->post(resourcePath, request);
     }
     
     # Returns a list of policies.
@@ -409,7 +397,7 @@ public isolated client class Client {
         PolicyDetails response = check self.clientEp->get(resourcePath);
         return response;
     }
-    
+
     # Updates the preferred delivery method and insured email address of the policy. Requires the systemId.
     #
     # + systemId - System identifier of the policy.
