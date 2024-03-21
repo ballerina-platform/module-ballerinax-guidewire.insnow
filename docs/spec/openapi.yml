@@ -1,7 +1,12 @@
 openapi: "3.0.2"
 info:
-  title: GuideWire insuranceNow cloud API
+  title: GuideWire InsuranceNow Cloud API
   version: 5.0.0
+  description: >
+    This OpenAPI specification outlines the interface for the Guidewire InsuranceNow Cloud API version 5.0.0, providing a comprehensive description of available endpoints, operations, parameters, request bodies, and response structures for integrating with the cloud-based insurance platform, InsuranceNow.
+    Designed to streamline operations for insurance companies, InsuranceNow offers functionalities including policy management, claims management, and customer engagement. The API enables developers to access and manipulate insurance data, facilitating automation, custom integrations, and workflow enhancements.
+    Key features include policy management, claims processing, and customer management.
+
 
 paths:
   /addresses/countries:
