@@ -1307,6 +1307,7 @@ public type BasicPolicy record {
     int transactionNumber?;
     # Indicates the current status of the policy transaction, such as pending, completed, or canceled.
     string transactionStatus?;
+    # Details of any associated umbrella policy, providing extended liability coverage beyond the primary policy limits.
     UmbrellaPolicyInfo umbrellaPolicyInfo?;
     # The code identifying the underwriter responsible for the policy, critical for risk management and policy approval processes.
     string underwriterCd?;
