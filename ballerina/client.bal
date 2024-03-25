@@ -204,8 +204,7 @@ public isolated client class Client {
         http:Request request = new;
         json jsonBody = payload.toJson();
         request.setPayload(jsonBody, "application/json");
-        http:Response response = check self.clientEp->post(resourcePath, request);
-        return response;
+        return self.clientEp->post(resourcePath, request);
     }
 
     # Deletes an attachment associated with a quote or application. Requires the attachment ref number (e.g. "Attachment-26808155-290885540").
