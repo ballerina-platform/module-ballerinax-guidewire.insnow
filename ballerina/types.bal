@@ -83,26 +83,6 @@ public type Policy record {
     CustomerInfo customerInfo?;
     # Provides a condensed overview of policy information, including key attributes and links for deeper exploration.
     PolicyMini policyMini?;
-    # A collection of contacts related to the policy, including individuals and entities with various roles.
-    Contact[] contacts?;
-    # A reference identifier linking to the customer information for additional context or action.
-    string customerRef?;
-    # Indicates whether the policy is associated with an external system or process.
-    string externalSystemInd?;
-    # A status or result code from an IVANS check, related to insurance verification.
-    string iVANSCheck?;
-    # A unique identifier for the policy item within the list.
-    string id?;
-    # Represents an insured entity or individual within the system, encompassing both basic identification and specific insurance-related information.
-    Insured insured?;
-    # Reference to the statement account associated with the policy, for billing or financial tracking.
-    string statementAccountRef?;
-    # An identifier for the system or platform managing the policy.
-    string systemId?;
-    # The version of the policy data structure or format, indicating compatibility or revisions.
-    string version?;
-    # A code or status indicating the VIP level of the policy or associated customer, for prioritization or benefits.
-    string vipLevel?;
     # Provides key details about an insurance product, including its identification and descriptive name, facilitating product-specific processing and categorization.
     ProductInfo productInfo?;
     # A general reference identifier for the policy item, usable for cross-referencing or linkage.
