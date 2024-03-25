@@ -776,46 +776,6 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Error"  
-  /applications/{systemId}/lines:
-    get:
-      operationId: getLinesOfBusiness
-      description: Returns a list of the lines-of-business of a quote or application.
-      parameters:
-        - in: path
-          name: systemId
-          description: System identifier of the quote or application.
-          schema:
-            type: string
-          required: true
-        - in: query
-          name: continuationId
-          schema:
-            type: string
-          description: Indicates the starting offset for the API results when you want to return a specific portion of the full results.
-        - in: query
-          name: limit
-          schema:
-            type: string
-          description: Indicates the maximum number of results to return. 
-      responses:
-        "200":
-          description: Successful operation.
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ListDriver"
-        "400":
-          description: Error with the submitted request.
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-        "500":
-          description: Unexpected internal error.
-          content:
-            application/json:
-              schema:
                 $ref: "#/components/schemas/Error"
   /claims/{systemId}/documents:
     get:
