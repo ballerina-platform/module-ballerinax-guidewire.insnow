@@ -2449,6 +2449,11 @@ components:
         transactionStatus:
           type: string
           description: "Indicates the current status of the policy transaction, such as pending, completed, or canceled."
+        transactionHistory:
+          type: array
+          description: "Detailed information on the previous transactions in this policy."
+          items:
+            $ref: "#/components/schemas/TransactionDetails"
         umbrellaPolicyInfo:
           $ref: '#/components/schemas/UmbrellaPolicyInfo'
           description: "Details of any associated umbrella policy, providing extended liability coverage beyond the primary policy limits."
@@ -2502,6 +2507,232 @@ components:
         paymentDay:
           type: string
           description: "Indicates the adjusted day of the month for payment due dates under the audited payment plan, which may have been modified from the original schedule."
+    TransactionDetails:
+      description: "Defines the details of a transaction within the system."
+      type: object
+      properties:
+        applicationRef:
+          type: string
+          description: "Reference to the application."
+        bookDt:
+          type: string
+          format: date
+          description: "Date when the transaction was booked."
+        cancelOfTransactionNumber:
+          type: integer
+          description: "Transaction number associated with the cancellation."
+        cancelRequestedByCd:
+          type: string
+          description: "Code indicating who requested the cancellation."
+        cancelTypeCd:
+          type: string
+          description: "Code indicating the type of cancellation."
+        cancelledByTransactionNumber:
+          type: integer
+          description: "Transaction number associated with the cancellation."
+        chargeReinstatementFeeInd:
+          type: boolean
+          description: "Indicates whether a reinstatement fee was charged."
+        checkNumber:
+          type: string
+          description: "Number associated with the check."
+        conversionGroup:
+          type: string
+          description: "Group associated with conversion."
+        conversionJobRef:
+          type: string
+          description: "Reference to the conversion job."
+        conversionTemplateIdRef:
+          type: string
+          description: "Reference to the conversion template ID."
+        correctedByTransactionNumber:
+          type: integer
+          description: "Transaction number associated with correction."
+        correctionOfTransactionNumber:
+          type: integer
+          description: "Transaction number associated with correction."
+        delayInvoiceInd:
+          type: boolean
+          description: "Indicates whether invoice is delayed."
+        holdType:
+          type: string
+          description: "Type of hold."
+        id:
+          type: string
+          description: "Unique identifier for the transaction."
+        inforceChangePremiumAmt:
+          type: string
+          description: "Amount of change in premium for in-force policy."
+        inforcePremiumAmt:
+          type: string
+          description: "Amount of in-force premium."
+        masterTransactionNumber:
+          type: integer
+          description: "Master transaction number."
+        newPolicyEffectiveDt:
+          type: string
+          format: date
+          description: "Effective date of the new policy."
+        newPolicyExpirationDt:
+          type: string
+          format: date
+          description: "Expiration date of the new policy."
+        outputTypeCd:
+          type: string
+          description: "Code indicating the type of output."
+        paymentAmt:
+          type: string
+          description: "Amount of payment."
+        paymentTypeCd:
+          type: string
+          description: "Code indicating the type of payment."
+        reinstatedByTransactionNumber:
+          type: integer
+          description: "Transaction number associated with reinstatement."
+        reinstatementOfTransactionNumber:
+          type: integer
+          description: "Transaction number associated with reinstatement."
+        releaseHoldReason:
+          type: string
+          description: "Reason for releasing hold."
+        renewalApplyOfTransactionNumber:
+          type: integer
+          description: "Transaction number associated with renewal application."
+        renewalProviderRef:
+          type: string
+          description: "Reference to renewal provider."
+        renewalSubProducerCd:
+          type: string
+          description: "Code indicating the sub-producer of renewal."
+        replacedByTransactionNumber:
+          type: integer
+          description: "Transaction number associated with replacement."
+        replacementOfTransactionNumber:
+          type: integer
+          description: "Transaction number associated with replacement."
+        rewriteToProductVersion:
+          type: string
+          description: "Version of the product for rewrite."
+        sourceCd:
+          type: string
+          description: "Code indicating the source of transaction."
+        submissionNumber:
+          type: integer
+          description: "Submission number."
+        transactionCd:
+          type: string
+          description: "Code indicating the type of transaction."
+        transactionCloseReasons:
+          $ref: '#/components/schemas/TransactionCloseReasons'
+          description: "Reasons for transaction closure."
+        transactionDt:
+          type: string
+          format: date
+          description: "Date of the transaction."
+        transactionEffectiveDt:
+          type: string
+          format: date
+          description: "Effective date of the transaction."
+        transactionEffectiveTm:
+          type: string
+          description: "Time when the transaction became effective."
+        transactionLongDescription:
+          type: string
+          description: "Long description of the transaction."
+        transactionNumber:
+          type: integer
+          description: "Transaction number."
+        transactionReasons:
+          type: array
+          items:
+            $ref: '#/components/schemas/TransactionReason'
+          description: "Reasons associated with the transaction."
+        transactionShortDescription:
+          type: string
+          description: "Short description of the transaction."
+        transactionText:
+          type: array
+          items:
+            $ref: '#/components/schemas/TransactionText'
+          description: "Text associated with the transaction."
+        transactionTm:
+          type: string
+          description: "Time of the transaction."
+        transactionUser:
+          type: string
+          description: "User associated with the transaction."
+        unAppliedByTransactionNumber:
+          type: integer
+          description: "Transaction number associated with un-application."
+        unApplyOfTransactionNumber:
+          type: integer
+          description: "Transaction number associated with un-application."
+        unapplySource:
+          type: string
+          description: "Source of un-application."
+        wcReinstatementCd:
+          type: string
+          description: "Code indicating the reinstatement of workers compensation."
+        wcTotalNetLocationsManualPremiumAmt:
+          type: string
+          description: "Total net locations manual premium amount for workers compensation."
+        wcWaiveCancellationAuditInd:
+          type: boolean
+          description: "Indicates whether cancellation audit for workers compensation is waived."
+        writtenChangePremiumAmt:
+          type: string
+          description: "Amount of change in premium for written policy."
+        writtenFeeAmt:
+          type: string
+          description: "Fee amount for written policy."
+        writtenPremiumAmt:
+          type: string
+          description: "Premium amount for written policy."
+    TransactionCloseReasons:
+      description: "Reasons for the closure of a transaction."
+      type: object
+      properties:
+        closeComment:
+          type: string
+          description: "Comment associated with transaction closure."
+        closeReasonCd:
+          type: string
+          description: "Code indicating the reason for transaction closure."
+        closeSubReasonCd:
+          type: string
+          description: "Code indicating the sub-reason for transaction closure."
+        closeSubReasonLabel:
+          type: string
+          description: "Label associated with the sub-reason for transaction closure."
+        id:
+          type: string
+          description: "Unique identifier for the transaction close reasons."
+    TransactionReason:
+      description: "Reason associated with a transaction."
+      type: object
+      properties:
+        id:
+          type: string
+          description: "Unique identifier for the transaction reason."
+        reasonCd:
+          type: string
+          description: "Code indicating the reason for the transaction."
+    TransactionText:
+      description: "Defines the structure for transaction text within the system, including its ID, textual content, associated code, and transaction text type."
+      type: object
+      properties:
+        id:
+          type: string
+          description: "Unique identifier for the transaction text."
+        text:
+          type: string
+          description: "Text associated with the transaction."
+        textCd:
+          type: string
+          description: "Code associated with the text."
+        transactionTextTypeCd:
+          type: string
+          description: "Code indicating the type of transaction text."
     ElectronicPaymentSource:
       description: "Defines the details of an electronic payment source, such as bank account or credit card information, used for processing payments within the system. It includes both ACH (Automated Clearing House) and credit card payment methods."
       type: object
@@ -2576,6 +2807,27 @@ components:
         statusCd:
           type: string
           description: "A code indicating the current status of the payment source, such as active, inactive, or under review, guiding its availability for use."
+        action:
+          type: string
+          description: "Placeholder for any action related to the payment source, such as update or deletion."
+        creditCardAuthorizationCd:
+          type: string
+          description: "Code indicating the status of credit card authorization, such as approved or declined."
+        creditCardAuthorizationMessage:
+          type: string
+          description: "Message providing additional details regarding credit card authorization status or any associated messages."
+        creditCardExpirationMonth:
+          type: string
+          description: "The expiration month of the credit card."
+        creditCardExpirationYr:
+          type: string
+          description: "The expiration year of the credit card."
+        creditCardHolderName:
+          type: string
+          description: "The name of the credit card holder as it appears on the card."
+        creditCardSecurityCd:
+          type: string
+          description: "The security code associated with the credit card, typically found on the back of the card."
     Contact:
       description: "Details a contact entity, capturing essential identification, type, and communication preferences, facilitating targeted and effective interactions."
       type: object
