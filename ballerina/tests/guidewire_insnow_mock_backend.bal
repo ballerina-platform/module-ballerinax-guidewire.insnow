@@ -543,19 +543,9 @@ service / on ep0 {
         return http:NO_CONTENT;
     }
 
-    resource function get applications/[string systemId]/documents/[string documentId]/content() returns byte[] {
-        return [];
-    }
-
-    // resource function get applications/[string systemId]/drivers(string? continuationId, boolean? includeDeleted, string? 'limit, "Driver"|"NonDriver"? typeCd) returns ListDriver {
-    // }
-
     resource function post applications/[string systemId]/drivers(@http:Payload Driver payload) returns http:Created {
         return http:CREATED;
     }
-
-    // resource function get applications/[string systemId]/drivers/[int:Signed32 driverNumber]() returns Driver {
-    // }
 
     resource function put applications/[string systemId]/drivers/[int:Signed32 driverNumber](@http:Payload Driver payload) returns Driver {
         return payload;
@@ -569,22 +559,228 @@ service / on ep0 {
         return payload;
     }
 
-    // resource function get claims/[string systemId]/documents() returns ListDocument {
-    // }
+    resource function get claims/[string systemId]/documents() returns ListDocument {
+        return {
+            documentListItems: [
+                {
+                    _links: [
+                        {
+                            href: "/documents/12345",
+                            rel: "self"
+                        }
+                    ],
+                    addDt: "2021-07-21",
+                    addTm: "14:35:00",
+                    addUser: "adminUser",
+                    canDeleteInd: true,
+                    canViewInd: true,
+                    deliveryCd: "EML",
+                    description: "Insurance Policy Document",
+                    documentTypeCd: "POLICY_DOC",
+                    filename: "policy_12345.pdf",
+                    formCd: "POL_FORM_01",
+                    itemDescription: "2021 Full Coverage Policy Document",
+                    itemName: "Full Coverage Policy",
+                    name: "Policy Document for John Doe",
+                    outputNumber: "OUT1234567",
+                    ref: "REF1234567",
+                    templateIdRef: "TPL12345",
+                    transactionNumber: "TXN1234567",
+                    'type: "PDF"
+                }
+            ]
+        };
+    }
 
     resource function post claims/[string systemId]/documents(@http:Payload DocumentDetail payload) returns http:Created {
         return http:CREATED;
     }
 
-    // resource function get claims/[string systemId]/notes() returns ListNote {
-    // }
+    resource function get claims/[string systemId]/notes() returns ListNote {
+        return {
+            noteListItems: [
+                {
+                    addDt: "2022-08-30",
+                    addTm: "09:45:00",
+                    addUser: "user123",
+                    comments: "Follow-up required for policy renewal",
+                    description: "Policy Renewal Follow-up",
+                    memo: "Ensure to discuss the new premium rates and benefits.",
+                    priorityCd: "HIGH",
+                    ref: "POLICY123456",
+                    status: "OPEN",
+                    stickyInd: true,
+                    templateId: "NOTE_TEMPLATE_01"
+                }
+            ]
+        };
+    }
 
     resource function post claims/[string systemId]/notes(@http:Payload NoteDetail payload) returns http:Created {
         return http:CREATED;
     }
 
-    // resource function get policies(string? continuationId, string? createdSinceDate, string? customerId, string? expiredDateAfter, boolean? includePriorTerms, string? 'limit, string? optionalFields, string? policyNumber, string? providerRef, boolean? recentlyViewed, string? status) returns ListPolicy|BadRequestError|InternalServerErrorError {
-    // }
+    resource function get policies(string? continuationId, string? createdSinceDate, string? customerId, string? expiredDateAfter, boolean? includePriorTerms, string? 'limit, string? optionalFields, string? policyNumber, string? providerRef, boolean? recentlyViewed, string? status) returns ListPolicy {
+        return {
+            "continuationId": "cont123456789",
+            "policyListItems": [
+                {
+                    "_links": [
+                        {
+                            "href": "/api/policy/details/123456",
+                            "rel": "self"
+                        }
+                    ],
+                    "customerInfo": {
+                        "customerNumber": "cust123456",
+                        "customerRef": "custRef123456",
+                        "id": "123456",
+                        "name": "John Doe"
+                    },
+                    "policyMini": {
+                        "_links": [
+                            {
+                                "href": "/api/policy/documents/123456",
+                                "rel": "documents"
+                            }
+                        ],
+                        "accountRef": "accRef123456",
+                        "auditAccountRef": "auditAcc123456",
+                        "basicPolicy": {
+                            "affinityGroupCd": "AG001",
+                            "autoDataPrefillInd": true,
+                            "branch": "MainBranch",
+                            "businessSourceCd": "Online",
+                            "cALineSelectedInd": true,
+                            "cAPolicyType": "Comprehensive",
+                            "cCLineSelectedInd": true,
+                            "cCPolicyType": "Collision",
+                            "cCSubline": "Standard",
+                            "cGLineSelectedInd": true,
+                            "cILineSelectedInd": true,
+                            "cLLineSelectedInd": true,
+                            "cPLineSelectedInd": true,
+                            "cPPolicyType": "CustomPolicyType",
+                            "cancelDt": "2022-08-24",
+                            "carrierCd": "CarrierCode123",
+                            "carrierGroupCd": "CarrierGroup123",
+                            "changeDt": "2022-08-25",
+                            "commCLUERequestInd": true,
+                            "comments": "This is a test policy.",
+                            "companyProductCd": "CompProd123",
+                            "controllingStateCd": "CA",
+                            "dPLineSelectedInd": true,
+                            "description": "Basic auto insurance policy.",
+                            "directorsAndOfficersLineSelectedInd": true,
+                            "displayDescription": "Auto Insurance Policy",
+                            "dividendFormNumber": "DFN123",
+                            "dividendPlanCd": "DPC123",
+                            "dividendPlanDisqualifyComment": "No disqualifications.",
+                            "dividendPlanDisqualifyInd": false,
+                            "dividendPlanDisqualifyReason": "",
+                            "effectiveDt": "2022-09-01",
+                            "effectiveTm": "12:01am",
+                            "employmentAndPracticeLineSelectedInd": true,
+                            "errorsAndOmissionLineSelectedInd": true,
+                            "expirationDt": "2023-09-01",
+                            "expiringFeeAmt": "50",
+                            "expiringPremiumAmt": "500",
+                            "extendedCoverageInd": true,
+                            "externalId": "EXT123456",
+                            "finalPremiumAmt": "550",
+                            "fireLightningInd": true,
+                            "fullTermAmt": "600",
+                            "gLLineSelectedInd": true,
+                            "id": "Pol123456",
+                            "inceptionDt": "2022-09-01",
+                            "inceptionTm": "12:01am",
+                            "latestTerm": "Term1",
+                            "latestTermTransaction": "LTTrans123",
+                            "legacyPolicyNumber": "LegacyNum123",
+                            "llcOwnedDt": "2022-08-24",
+                            "lossSettlementType": "ActualCashValue",
+                            "manualBillingEntitySplitInd": true,
+                            "manualReinstateInd": true,
+                            "manualReinstateReason": "Customer request",
+                            "manualRenewalInd": true,
+                            "manualRenewalReason": "Under review",
+                            "namedNonOwnedInd": true,
+                            "nonRenewInd": false,
+                            "oldSubTypeCd": "OldSubType123",
+                            "originalApplicationRef": "OrigApp123",
+                            "pLLineSelectedInd": true,
+                            "payPlanCd": "Monthly",
+                            "paymentDay": "15",
+                            "policyDisplayNumber": "PDN123456",
+                            "policyNumber": "PN123456",
+                            "policySource": "Agent",
+                            "policyType": "Auto",
+                            "policyVersion": "001",
+                            "previousCarrierCd": "PrevCarrier123",
+                            "previousExpirationDt": "2021-09-01",
+                            "previousPolicyNumber": "PrevPol123",
+                            "previousPremium": "480",
+                            "productTypeCd": "Auto",
+                            "productVersionIdRef": "ProdVer123",
+                            "programCd": "Standard",
+                            "promotionCd": "Promo123",
+                            "providerRef": "ProvRef123",
+                            "quoteNumber": "Quote123456",
+                            "quoteNumberLookup": "QuoteLookup123",
+                            "ratedInd": true,
+                            "reinstateDt": "2022-09-02",
+                            "renewalPolicyRef": "RenewPol123",
+                            "renewalProviderRef": "RenewProv123",
+                            "renewalSubProducerCd": "RenewSubProd123",
+                            "renewalTermCd": "RenewTerm123",
+                            "renewedFromPolicyRef": "RenewedFromPol123",
+                            "replacedByPolicyRef": "ReplacedByPol123",
+                            "rewriteFromPolicyRef": "RewriteFrom123",
+                            "rewritePolicyRef": "RewritePol123",
+                            "sessionLink": "SessionLink123",
+                            "shellPolicyInd": true,
+                            "sicCode": "SIC123",
+                            "statusCd": "Active",
+                            "subProducerCd": "SubProd123",
+                            "subTypeCd": "SubType123",
+                            "transactionCd": "Trans123",
+                            "transactionHistory": [],
+                            "transactionNumber": "TransNum123",
+                            "transactionStatus": "Pending",
+                            "underwriterCd": "UWC123",
+                            "underwritingHoldInd": false,
+                            "vandalismMaliciousMischiefInd": false,
+                            "wcARDRuleEnabled": false,
+                            "wcAnniversaryRatingDay": "2022-09-01",
+                            "wcPremiumDiscountTableTypeCd": "TableType1",
+                            "writtenFeeAmt": "50",
+                            "writtenPremiumAmt": "500"
+                        },
+                        "contacts": [],
+                        "customerRef": "CustRef123",
+                        "externalSystemInd": "Yes",
+                        "iVANSCheck": "Passed",
+                        "id": "PolicyID123456",
+                        "insured": {
+                            "entityTypeCd": "Individual",
+                            "id": "InsuredID123",
+                            "indexName": "John Doe",
+                            "partyInfo": []
+                        },
+                        "statementAccountRef": "StatementAcc123",
+                        "systemId": "SysID123",
+                        "version": "1.0",
+                        "vipLevel": "Gold"
+                    },
+                    "productInfo": {
+                        "id": "ProdInfo123",
+                        "name": "Auto Insurance"
+                    },
+                    "ref": "Ref123456789"
+                }
+            ]
+        };
+    }
 
     // resource function get policies/[string systemId](string? asOfDate) returns PolicyDetails|BadRequestError|InternalServerErrorError {
     // }
