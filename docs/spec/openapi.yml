@@ -2576,6 +2576,27 @@ components:
         statusCd:
           type: string
           description: "A code indicating the current status of the payment source, such as active, inactive, or under review, guiding its availability for use."
+        action:
+          type: string
+          description: "Placeholder for any action related to the payment source, such as update or deletion."
+        creditCardAuthorizationCd:
+          type: string
+          description: "Code indicating the status of credit card authorization, such as approved or declined."
+        creditCardAuthorizationMessage:
+          type: string
+          description: "Message providing additional details regarding credit card authorization status or any associated messages."
+        creditCardExpirationMonth:
+          type: string
+          description: "The expiration month of the credit card."
+        creditCardExpirationYr:
+          type: string
+          description: "The expiration year of the credit card."
+        creditCardHolderName:
+          type: string
+          description: "The name of the credit card holder as it appears on the card."
+        creditCardSecurityCd:
+          type: string
+          description: "The security code associated with the credit card, typically found on the back of the card."
     Contact:
       description: "Details a contact entity, capturing essential identification, type, and communication preferences, facilitating targeted and effective interactions."
       type: object
