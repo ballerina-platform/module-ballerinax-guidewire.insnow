@@ -115,7 +115,7 @@ public isolated client class Client {
         request.setPayload(jsonBody, "application/json");
         return self.clientEp->post(resourcePath, request);
     }
-    
+
     # Returns a list of quotes or applications.
     #
     # + applicationOrQuoteNumber - Application or quote number.
@@ -362,7 +362,7 @@ public isolated client class Client {
         request.setPayload(jsonBody, "application/json");
         return self.clientEp->post(resourcePath, request);
     }
-    
+
     # Returns a list of policies.
     #
     # + continuationId - Indicates the starting list value for the API results when you want to return a specific portion of the full results. You can use this parameter with the limit parameter. For example, if the limit on your first API call was 10 and the results populated a list on the page. To request the next page of 10 results, call the API again with continuationId=11 and limit=10.

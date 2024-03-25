@@ -1360,8 +1360,10 @@ components:
       type: object
       properties:
         documentListItems:
+          type: array
           description: "An array of Document objects, each representing detailed information about a specific document within the system."
-          $ref: '#/components/schemas/Document'    
+          items:
+            $ref: '#/components/schemas/Document'    
     Document:
       description: "Detailed metadata and properties associated with a specific document, including access permissions, document type, and identifiers."
       type: object
