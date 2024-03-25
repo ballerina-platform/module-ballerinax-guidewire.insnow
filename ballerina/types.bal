@@ -827,8 +827,8 @@ public type Note record {
 
 # Encapsulates a response structure for API calls that return multiple documents, facilitating easy access to and manipulation of a collection of documents within the system.
 public type ListDocument record {
-    # Detailed metadata and properties associated with a specific document, including access permissions, document type, and identifiers.
-    Document documentListItems?;
+    # An array of Document objects, each representing detailed information about a specific document within the system.
+    Document[] documentListItems?;
 };
 
 # Contains detailed information about a single country, including its ISO code and the full country name. This schema is crucial for ensuring accurate country representation and selection across the application.
@@ -1307,7 +1307,6 @@ public type BasicPolicy record {
     int transactionNumber?;
     # Indicates the current status of the policy transaction, such as pending, completed, or canceled.
     string transactionStatus?;
-    # Details of any associated umbrella policy, providing extended liability coverage beyond the primary policy limits.
     UmbrellaPolicyInfo umbrellaPolicyInfo?;
     # The code identifying the underwriter responsible for the policy, critical for risk management and policy approval processes.
     string underwriterCd?;
