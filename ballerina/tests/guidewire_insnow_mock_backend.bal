@@ -547,9 +547,8 @@ service / on ep0 {
         return [];
     }
 
-    resource function get applications/[string systemId]/drivers(string? continuationId, boolean? includeDeleted, string? 'limit, "Driver"|"NonDriver"? typeCd) returns ListDriver {
-        
-    }
+    // resource function get applications/[string systemId]/drivers(string? continuationId, boolean? includeDeleted, string? 'limit, "Driver"|"NonDriver"? typeCd) returns ListDriver {
+    // }
 
     resource function post applications/[string systemId]/drivers(@http:Payload Driver payload) returns http:Created {
         return http:CREATED;
@@ -569,9 +568,6 @@ service / on ep0 {
     resource function patch applications/[string systemId]/drivers/[int:Signed32 driverNumber](@http:Payload Driver payload) returns Driver {
         return payload;
     }
-
-    // resource function get applications/[string systemId]/lines(string? continuationId, string? 'limit) returns ListDriver {
-    // }
 
     // resource function get claims/[string systemId]/documents() returns ListDocument {
     // }
