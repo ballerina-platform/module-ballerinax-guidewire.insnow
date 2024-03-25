@@ -2512,6 +2512,7 @@ components:
           description: "The code for the type of premium discount table applied to the workers' compensation policy, affecting discounts for larger premium volumes."
     UmbrellaPolicyInfo:
       type: object
+      description: "Encapsulates detailed information regarding an umbrella insurance policy within the Guidewire InsuranceNow system. This schema is designed to capture and organize key identifiers and attributes of an umbrella policy, facilitating effective policy management, identification, and reference across the platform. It serves as a foundational element for operations such as policy lookup, modification, and integration with related insurance processes, ensuring a coherent and unified approach to managing umbrella policies."
       properties:
         id:
           type: string
