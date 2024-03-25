@@ -529,7 +529,7 @@ service / on ep0 {
                     ref: "POL12345REN",
                     templateIdRef: "TEMPLATE_RENEWAL",
                     transactionNumber: "TX123456789",
-                    type: "Renewal"
+                    'type: "Renewal"
                 }
             ]
         };
@@ -543,11 +543,13 @@ service / on ep0 {
         return http:NO_CONTENT;
     }
 
-    // resource function get applications/[string systemId]/documents/[string documentId]/content() returns byte[] {
-    // }
+    resource function get applications/[string systemId]/documents/[string documentId]/content() returns byte[] {
+        return [];
+    }
 
-    // resource function get applications/[string systemId]/drivers(string? continuationId, boolean? includeDeleted, string? 'limit, "Driver"|"NonDriver"? typeCd) returns ListDriver {
-    // }
+    resource function get applications/[string systemId]/drivers(string? continuationId, boolean? includeDeleted, string? 'limit, "Driver"|"NonDriver"? typeCd) returns ListDriver {
+        
+    }
 
     resource function post applications/[string systemId]/drivers(@http:Payload Driver payload) returns http:Created {
         return http:CREATED;
