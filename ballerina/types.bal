@@ -1307,6 +1307,7 @@ public type BasicPolicy record {
     int transactionNumber?;
     # Indicates the current status of the policy transaction, such as pending, completed, or canceled.
     string transactionStatus?;
+    # Encapsulates detailed information regarding an umbrella insurance policy within the Guidewire InsuranceNow system. This schema is designed to capture and organize key identifiers and attributes of an umbrella policy, facilitating effective policy management, identification, and reference across the platform. It serves as a foundational element for operations such as policy lookup, modification, and integration with related insurance processes, ensuring a coherent and unified approach to managing umbrella policies.
     UmbrellaPolicyInfo umbrellaPolicyInfo?;
     # The code identifying the underwriter responsible for the policy, critical for risk management and policy approval processes.
     string underwriterCd?;
@@ -1710,6 +1711,7 @@ public type ReapplyOutputSuppression record {
     boolean includeInd?;
 };
 
+# Encapsulates detailed information regarding an umbrella insurance policy within the Guidewire InsuranceNow system. This schema is designed to capture and organize key identifiers and attributes of an umbrella policy, facilitating effective policy management, identification, and reference across the platform. It serves as a foundational element for operations such as policy lookup, modification, and integration with related insurance processes, ensuring a coherent and unified approach to managing umbrella policies.
 public type UmbrellaPolicyInfo record {
     # The unique identifier for the umbrella policy, used to uniquely distinguish this policy from others within the system.
     string id?;
