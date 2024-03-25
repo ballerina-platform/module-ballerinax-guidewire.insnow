@@ -415,6 +415,20 @@ public type TaxInfo record {
     boolean withholdingExemptInd?;
 };
 
+# Reasons for the closure of a transaction.
+public type TransactionCloseReasons record {
+    # Comment associated with transaction closure.
+    string closeComment?;
+    # Code indicating the reason for transaction closure.
+    string closeReasonCd?;
+    # Code indicating the sub-reason for transaction closure.
+    string closeSubReasonCd?;
+    # Label associated with the sub-reason for transaction closure.
+    string closeSubReasonLabel?;
+    # Unique identifier for the transaction close reasons.
+    string id?;
+};
+
 # Details an individual's email contact information, including type and preference status, facilitating communication and documentation processes.
 public type EmailInfo record {
     # The email address itself, providing a means of electronic communication.
@@ -565,6 +579,20 @@ public type ElectronicPaymentSource record {
     string sourceTypeCd?;
     # A code indicating the current status of the payment source, such as active, inactive, or under review, guiding its availability for use.
     string statusCd?;
+    # Placeholder for any action related to the payment source, such as update or deletion.
+    string action?;
+    # Code indicating the status of credit card authorization, such as approved or declined.
+    string creditCardAuthorizationCd?;
+    # Message providing additional details regarding credit card authorization status or any associated messages.
+    string creditCardAuthorizationMessage?;
+    # The expiration month of the credit card.
+    string creditCardExpirationMonth?;
+    # The expiration year of the credit card.
+    string creditCardExpirationYr?;
+    # The name of the credit card holder as it appears on the card.
+    string creditCardHolderName?;
+    # The security code associated with the credit card, typically found on the back of the card.
+    string creditCardSecurityCd?;
 };
 
 # Represents an insured entity or individual within the system, encompassing both basic identification and specific insurance-related information.
@@ -1017,6 +1045,18 @@ public type ListAddress record {
     Address[] addresses?;
 };
 
+# Defines the structure for transaction text within the system, including its ID, textual content, associated code, and transaction text type.
+public type TransactionText record {
+    # Unique identifier for the transaction text.
+    string id?;
+    # Text associated with the transaction.
+    string text?;
+    # Code associated with the text.
+    string textCd?;
+    # Code indicating the type of transaction text.
+    string transactionTextTypeCd?;
+};
+
 # Defines the attributes of a state or province, providing key identifiers and names for use in addressing and location services within the insurance application.
 public type StateProvinces record {
     # The unique identifier or code for the state or province, often used as a standard abbreviation or code in address formats.
@@ -1287,6 +1327,8 @@ public type BasicPolicy record {
     int transactionNumber?;
     # Indicates the current status of the policy transaction, such as pending, completed, or canceled.
     string transactionStatus?;
+    # Detailed information on the previous transactions in this policy.
+    TransactionDetails[] transactionHistory?;
     # Encapsulates detailed information regarding an umbrella insurance policy within the Guidewire InsuranceNow system. This schema is designed to capture and organize key identifiers and attributes of an umbrella policy, facilitating effective policy management, identification, and reference across the platform. It serves as a foundational element for operations such as policy lookup, modification, and integration with related insurance processes, ensuring a coherent and unified approach to managing umbrella policies.
     UmbrellaPolicyInfo umbrellaPolicyInfo?;
     # The code identifying the underwriter responsible for the policy, critical for risk management and policy approval processes.
@@ -1443,6 +1485,122 @@ public type Error record {
 public type AddressStateProvinceTemplates record {
     # A collection of state or province entities, each conforming to the defined StateProvinces schema, allowing for detailed representation of geographic administrative divisions.
     StateProvinces[] stateProvinces?;
+};
+
+# Defines the details of a transaction within the system.
+public type TransactionDetails record {
+    # Reference to the application.
+    string applicationRef?;
+    # Date when the transaction was booked.
+    string bookDt?;
+    # Transaction number associated with the cancellation.
+    int cancelOfTransactionNumber?;
+    # Code indicating who requested the cancellation.
+    string cancelRequestedByCd?;
+    # Code indicating the type of cancellation.
+    string cancelTypeCd?;
+    # Transaction number associated with the cancellation.
+    int cancelledByTransactionNumber?;
+    # Indicates whether a reinstatement fee was charged.
+    boolean chargeReinstatementFeeInd?;
+    # Number associated with the check.
+    string checkNumber?;
+    # Group associated with conversion.
+    string conversionGroup?;
+    # Reference to the conversion job.
+    string conversionJobRef?;
+    # Reference to the conversion template ID.
+    string conversionTemplateIdRef?;
+    # Transaction number associated with correction.
+    int correctedByTransactionNumber?;
+    # Transaction number associated with correction.
+    int correctionOfTransactionNumber?;
+    # Indicates whether invoice is delayed.
+    boolean delayInvoiceInd?;
+    # Type of hold.
+    string holdType?;
+    # Unique identifier for the transaction.
+    string id?;
+    # Amount of change in premium for in-force policy.
+    string inforceChangePremiumAmt?;
+    # Amount of in-force premium.
+    string inforcePremiumAmt?;
+    # Master transaction number.
+    int masterTransactionNumber?;
+    # Effective date of the new policy.
+    string newPolicyEffectiveDt?;
+    # Expiration date of the new policy.
+    string newPolicyExpirationDt?;
+    # Code indicating the type of output.
+    string outputTypeCd?;
+    # Amount of payment.
+    string paymentAmt?;
+    # Code indicating the type of payment.
+    string paymentTypeCd?;
+    # Transaction number associated with reinstatement.
+    int reinstatedByTransactionNumber?;
+    # Transaction number associated with reinstatement.
+    int reinstatementOfTransactionNumber?;
+    # Reason for releasing hold.
+    string releaseHoldReason?;
+    # Transaction number associated with renewal application.
+    int renewalApplyOfTransactionNumber?;
+    # Reference to renewal provider.
+    string renewalProviderRef?;
+    # Code indicating the sub-producer of renewal.
+    string renewalSubProducerCd?;
+    # Transaction number associated with replacement.
+    int replacedByTransactionNumber?;
+    # Transaction number associated with replacement.
+    int replacementOfTransactionNumber?;
+    # Version of the product for rewrite.
+    string rewriteToProductVersion?;
+    # Code indicating the source of transaction.
+    string sourceCd?;
+    # Submission number.
+    int submissionNumber?;
+    # Code indicating the type of transaction.
+    string transactionCd?;
+    # Reasons for the closure of a transaction.
+    TransactionCloseReasons transactionCloseReasons?;
+    # Date of the transaction.
+    string transactionDt?;
+    # Effective date of the transaction.
+    string transactionEffectiveDt?;
+    # Time when the transaction became effective.
+    string transactionEffectiveTm?;
+    # Long description of the transaction.
+    string transactionLongDescription?;
+    # Transaction number.
+    int transactionNumber?;
+    # Reasons associated with the transaction.
+    TransactionReason[] transactionReasons?;
+    # Short description of the transaction.
+    string transactionShortDescription?;
+    # Text associated with the transaction.
+    TransactionText[] transactionText?;
+    # Time of the transaction.
+    string transactionTm?;
+    # User associated with the transaction.
+    string transactionUser?;
+    # Transaction number associated with un-application.
+    int unAppliedByTransactionNumber?;
+    # Transaction number associated with un-application.
+    int unApplyOfTransactionNumber?;
+    # Source of un-application.
+    string unapplySource?;
+    # Code indicating the reinstatement of workers compensation.
+    string wcReinstatementCd?;
+    # Total net locations manual premium amount for workers compensation.
+    string wcTotalNetLocationsManualPremiumAmt?;
+    # Indicates whether cancellation audit for workers compensation is waived.
+    boolean wcWaiveCancellationAuditInd?;
+    # Amount of change in premium for written policy.
+    string writtenChangePremiumAmt?;
+    # Fee amount for written policy.
+    string writtenFeeAmt?;
+    # Premium amount for written policy.
+    string writtenPremiumAmt?;
 };
 
 # Encapsulates comprehensive information about a party involved in the insurance process, including personal, business, and contact details, facilitating holistic management and communication.
@@ -1621,6 +1779,14 @@ public type QuestionReply record {
     string value?;
     # Indicates whether the question is currently set to be visible to the user, allowing for conditional display based on context or previous answers.
     boolean visibleInd?;
+};
+
+# Reason associated with a transaction.
+public type TransactionReason record {
+    # Unique identifier for the transaction reason.
+    string id?;
+    # Code indicating the reason for the transaction.
+    string reasonCd?;
 };
 
 # Outlines detailed information about a document, including its description, associated files, and metadata, supporting comprehensive document management and access.
