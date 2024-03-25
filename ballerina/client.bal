@@ -305,20 +305,6 @@ public isolated client class Client {
         return response;
     }
 
-    # Returns a list of the lines-of-business of a quote or application.
-    #
-    # + systemId - System identifier of the quote or application.
-    # + continuationId - Indicates the starting offset for the API results when you want to return a specific portion of the full results.
-    # + 'limit - Indicates the maximum number of results to return.
-    # + return - Successful operation. 
-    resource isolated function get applications/[string systemId]/lines(string? continuationId = (), string? 'limit = ()) returns ListDriver|error {
-        string resourcePath = string `/applications/${getEncodedUri(systemId)}/lines`;
-        map<anydata> queryParam = {"continuationId": continuationId, "limit": 'limit};
-        resourcePath = resourcePath + check getPathForQueryParam(queryParam);
-        ListDriver response = check self.clientEp->get(resourcePath);
-        return response;
-    }
-
     # Returns the list of documents attached to a claim.
     #
     # + systemId - System identifier of the claim.
