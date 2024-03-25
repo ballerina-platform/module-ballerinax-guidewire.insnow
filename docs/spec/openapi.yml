@@ -3392,38 +3392,6 @@ components:
         policyMini:
           $ref: '#/components/schemas/PolicyMini'
           description: "A condensed version of the policy information, highlighting key details and references."
-        contacts:
-          type: array
-          items:
-            $ref: '#/components/schemas/Contact'
-          description: "A collection of contacts related to the policy, including individuals and entities with various roles."
-        customerRef:
-          type: string
-          description: "A reference identifier linking to the customer information for additional context or action."
-        externalSystemInd:
-          type: string
-          description: "Indicates whether the policy is associated with an external system or process."
-        iVANSCheck:
-          type: string
-          description: "A status or result code from an IVANS check, related to insurance verification."
-        id:
-          type: string
-          description: "A unique identifier for the policy item within the list."
-        insured:
-          $ref: '#/components/schemas/Insured'
-          description: "Information about the insured entity or individual covered under the policy."
-        statementAccountRef:
-          type: string
-          description: "Reference to the statement account associated with the policy, for billing or financial tracking."
-        systemId:
-          type: string
-          description: "An identifier for the system or platform managing the policy."
-        version:
-          type: string
-          description: "The version of the policy data structure or format, indicating compatibility or revisions."
-        vipLevel:
-          type: string
-          description: "A code or status indicating the VIP level of the policy or associated customer, for prioritization or benefits."
         productInfo:
           $ref: '#/components/schemas/ProductInfo'
           description: "General information about the product associated with the policy."
