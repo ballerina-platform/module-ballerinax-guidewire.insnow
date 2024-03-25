@@ -745,7 +745,7 @@ service / on ep0 {
                             "subTypeCd": "SubType123",
                             "transactionCd": "Trans123",
                             "transactionHistory": [],
-                            "transactionNumber": "TransNum123",
+                            "transactionNumber": 123,
                             "transactionStatus": "Pending",
                             "underwriterCd": "UWC123",
                             "underwritingHoldInd": false,
@@ -782,8 +782,113 @@ service / on ep0 {
         };
     }
 
-    // resource function get policies/[string systemId](string? asOfDate) returns PolicyDetails|BadRequestError|InternalServerErrorError {
-    // }
+    resource function get policies/[string systemId](string? asOfDate) returns PolicyDetails {
+        return {
+            _links: [
+                {
+                    href: "/api/policies/123456789",
+                    rel: "details"
+                }
+            ],
+            _revision: "1",
+            accountRef: "ACC123456789",
+            auditAccountRef: "AUDIT123456789",
+            basicPolicy: {
+                affinityGroupCd: "GRP123",
+                auditPayPlan: {
+                    auditPayPlanCd: "MONTHLY",
+                    electronicPaymentSource: {
+                        achBankAccountNumber: "1234567890",
+                        achBankAccountTypeCd: "CHECKING",
+                        achBankName: "Bank of API",
+                        achExceptionMsg: "Test",
+                        achName: "John Doe",
+                        achRoutingNumber: "111000025",
+                        achStandardEntryClassCd: "PPD",
+                        action: "PAY",
+                        agentTrustInd: false,
+                        carrierCd: "CARRIER123",
+                        creditCardAuthorizationCd: "AUTH123",
+                        creditCardAuthorizationMessage: "Authorized",
+                        creditCardExpirationMonth: "12",
+                        creditCardExpirationYr: "2024",
+                        creditCardHolderName: "John Doe",
+                        creditCardNumber: "4111111111111111",
+                        creditCardSecurityCd: "123",
+                        creditCardTypeCd: "VISA",
+                        customerPaymentProfileId: "CUST_PAY_PROFILE_123",
+                        customerProfileId: "CUST_PROFILE_123",
+                        id: "ELECT_PAY_SRC_123",
+                        methodCd: "ELECTRONIC",
+                        midasId: "MIDAS123",
+                        partyInfo: {
+                            addresses: [
+                                {
+                                    addition: "Suite 123",
+                                    additionalLegal: "Legal Description 123",
+                                    addr1: "123 API Street",
+                                    addr2: "Apt 456",
+                                    addr3: "Floor 7",
+                                    addr4: "Building 8",
+                                    addrTypeCd: "PRIMARY",
+                                    addressHash: "HASH123",
+                                    attention: "John Doe",
+                                    barcodeDigits: "123456",
+                                    block: "Block123",
+                                    carrierRoute: "Route123",
+                                    city: "API City",
+                                    congressCode: "CONG123",
+                                    county: "API County",
+                                    countyCode: "COUNTY123",
+                                    dpv: "DPV123",
+                                    dpvDesc: "Deliverable",
+                                    dpvNotes: "Note123",
+                                    dpvNotesDesc: "Delivery Point Validation Notes",
+                                    geocodeLevel: "HIGH",
+                                    geocodeLevelDescription: "Exact match",
+                                    id: "ADDR123",
+                                    latitude: "37.7749",
+                                    legalDesc: "Legal Description 123",
+                                    longitude: "-122.4194",
+                                    lot: "Lot123",
+                                    meridian: "Meridian123",
+                                    plssCounty: "PLSS123",
+                                    postDirectional: "N",
+                                    postalCode: "94103",
+                                    preDirectional: "S",
+                                    primaryMeridian: "PrimaryMeridian123",
+                                    primaryNumber: "123",
+                                    primaryNumberSuffix: "A",
+                                    range: "Range123",
+                                    rangeDir: "E",
+                                    regionCd: "Region123",
+                                    regionISOCd: "US",
+                                    score: "100",
+                                    secondaryDesignator: "Apt",
+                                    secondaryNumber: "456",
+                                    section: "Section123",
+                                    stateProvCd: "CA",
+                                    streetName: "API Street",
+                                    suffix: "St",
+                                    township: "Township123",
+                                    townshipDir: "N",
+                                    validated: "true",
+                                    verificationHash: "VERIFY123",
+                                    verificationMsg: "Verified"
+                                }
+                            ],
+                            emailInfo: {
+                                emailAddr: "johndoe@example.com",
+                                emailTypeCd: "PRIMARY",
+                                id: "EMAIL123",
+                                preferredInd: true
+                            }
+                        }
+                    }
+                }
+            }
+        };
+    }
 
     resource function patch policies/[string systemId](@http:Payload PolicyDetails payload) returns PolicyDetails {
         return payload;
