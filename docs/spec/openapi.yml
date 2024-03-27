@@ -3788,3 +3788,14 @@ components:
       required:
         - code
         - message
+  securitySchemes:
+    BasicAuth:
+      type: http
+      scheme: basic
+    BearerAuth:
+      type: http
+      scheme: bearer
+
+security:
+  - BasicAuth: []
+  - BearerAuth: []
