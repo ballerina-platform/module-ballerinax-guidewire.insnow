@@ -26,7 +26,7 @@ configurable string serviceUrl = isLiveServer ? os:getEnv("INSNOW_URL") : "http:
 Client insuranceNow = check initClient();
 
 function initClient() returns Client|error {
-    if (isLiveServer) {
+    if isLiveServer {
         log:printInfo("Running tests on actual server");
     } else {
         log:printInfo("Running tests on mock server");
