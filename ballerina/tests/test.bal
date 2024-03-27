@@ -13,3 +13,24 @@
 // KIND, either express or implied.  See the License for the
 // specific language governing permissions and limitations
 // under the License.
+
+import ballerina/os;
+import ballerina/log;
+
+configurable boolean isLiveServer = os:getEnv("IS_LIVE_SERVER") == "true";
+
+configurable string username = isLiveServer ? os:getEnv("INSNOW_USERNAME") : "test";
+configurable string password = isLiveServer ? os:getEnv("INSNOW_PASSWORD") : "test";
+configurable string serviceUrl = isLiveServer ? os:getEnv("INSNOW_URL") : "http://localhost:9090";
+
+Client insuranceNow = check initClient();
+
+function initClient() returns Client|error {
+    if (isLiveServer) {
+        log:printInfo("Running tests on actual server");
+    } else {
+        log:printInfo("Running tests on mock server");
+    }
+    return new (serviceUrl);
+}
+
