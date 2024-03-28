@@ -32,8 +32,8 @@ configurable string password = ?;
 
 insnow:ConnectionConfig insnowConfig = {
     auth: {
-        username: username,
-        password: password
+        username,
+        password
     }
 };
 
@@ -87,6 +87,7 @@ insnow:Attachment attachment = {
     ],
     templateId: "template-insurance-application"
 };
+
 _ = check insuranceNow->/applications/["123"]/documents.post(attachment);
 ```
 
