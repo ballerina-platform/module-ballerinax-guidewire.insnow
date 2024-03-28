@@ -19,12 +19,12 @@ import ballerina/time;
 import ballerinax/guidewire.insnow;
 
 type ApplicationPortal service object {
-    *http:Service;
+    *http:InterceptableService;
 
-    resource function get applications(string? customerId = (), string? continuationId = (), string? 'limit = ()) returns insnow:ListApplication|ClientError|ServerError;
-    resource function post applications(insnow:Quote quote, string? requestedTypeCd = ()) returns ClientError|ServerError?;
-    resource function post applications/[string applicationId]/documents(insnow:Attachment attachment) returns ClientError|ServerError?;
-    resource function post applications/[string applicationId]/convert() returns ClientError|ServerError?;
+    resource function get applications(string? customerId = (), string? continuationId = (), string? 'limit = ()) returns insnow:ListApplication|error;
+    resource function post applications(insnow:Quote quote, string? requestedTypeCd = ()) returns error?;
+    resource function post applications/[string applicationId]/documents(insnow:Attachment attachment) returns error?;
+    resource function post applications/[string applicationId]/convert() returns error?;
 };
 
 type GuidewireErrorPayload record {|
