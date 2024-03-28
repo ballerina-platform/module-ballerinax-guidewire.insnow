@@ -6,12 +6,6 @@ The `ballerinax/guidewire.insnow` package provides a client API to connect to Gu
 
 The Ballerina Guidewire InsuranceNow connector is compatible with the Guidewire InsuranceNow `2023.3 (Innsbruck)` version.
 
-## Compatibility
-
-|                        |   Version    |
-|:-----------------------|:------------:|
-| Guidewire InsuranceNow | **2023.3 (Innsbruck)** |
-
 ## Setup guide
 
 To use the Ballerina Guidewire InsuranceNow connector, access to the Guidewire API is required. Access is granted to partners or customers of the Guidewire platform. To become a partner or customer, reach out to Guidewire's sales team via the [Guidewire website](https://www.guidewire.com/contact-us/). For detailed instructions on obtaining authentication/authorization keys, please go through the [portal development guide](https://docs.guidewire.com/cloud/in/20233/portaldev/PortalDevelopment/topics/c_overview_portal_development.html).
