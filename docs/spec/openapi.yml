@@ -55,7 +55,7 @@ paths:
             type: string
       responses:
         "200":
-          description: Successful response
+          description: Successful response.
           content:
             application/json:
               schema:
@@ -260,7 +260,7 @@ paths:
             type: string
       responses:
         "200":
-          description: Successful operation.
+          description: Successful response.
           content:
             application/json:
               schema:
@@ -325,7 +325,7 @@ paths:
           required: true    
       responses:
         "200":
-          description: Successful operation.
+          description: Successful response.
         "400":
           description: Error with the submitted request.
           content:
@@ -485,7 +485,7 @@ paths:
           required: true
       responses:
         "204":
-          description: Successful operation.
+          description: Successful response.
         "400":
           description: Invalid request or response.
           content:
@@ -517,7 +517,7 @@ paths:
           required: true
       responses:
         "200":
-          description: Successful operation.
+          description: Successful response.
           content:
             application/octet-stream:
               schema:
@@ -571,7 +571,7 @@ paths:
           description: Filter by type of driver.
       responses:
         "200":
-          description: Successful operation.
+          description: Successful response.
           content:
             application/json:
               schema:
@@ -644,7 +644,7 @@ paths:
           required: true      
       responses:
         "200":
-          description: Successful operation.
+          description: Successful response.
           content:
             application/json:
               schema:
@@ -686,7 +686,7 @@ paths:
               $ref: '#/components/schemas/Driver'
       responses:
         "200":
-          description: Successful operation.
+          description: Successful response.
           content:
             application/json:
               schema:
@@ -728,7 +728,7 @@ paths:
               $ref: '#/components/schemas/Driver'
       responses:
         "200":
-          description: Successful operation.
+          description: Successful response.
           content:
             application/json:
               schema:
@@ -764,7 +764,7 @@ paths:
           required: true      
       responses:
         "200":
-          description: Successful operation.
+          description: Successful response.
         "400":
           description: Error with the submitted request.
           content:
@@ -790,7 +790,7 @@ paths:
           required: true
       responses:
         "200":
-          description: Successful operation.
+          description: Successful response.
           content:
             application/json:
               schema:
@@ -856,7 +856,7 @@ paths:
           required: true
       responses:
         "200":
-          description: Successful operation.
+          description: Successful response.
           content:
             application/json:
               schema:
@@ -971,7 +971,7 @@ paths:
             type: string
       responses:
         "200":
-          description: Successful operation.
+          description: Successful response.
           content:
             application/json:
               schema:
@@ -1006,7 +1006,7 @@ paths:
             type: string
       responses:
         "200":
-          description: Successful operation.
+          description: Successful response.
           content:
             application/json:
               schema:
@@ -1041,7 +1041,7 @@ paths:
               $ref: '#/components/schemas/PolicyDetails'
       responses:
         "200":
-          description: Successful operation.
+          description: Successful response.
           content:
             application/json:
               schema:
