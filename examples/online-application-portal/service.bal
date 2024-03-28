@@ -21,21 +21,50 @@ configurable string guidewireDomain = ?;
 configurable string username = ?;
 configurable string password = ?;
 
-service / on new http:Listener(9090) {
+service /portal on new http:Listener(9090) {
     private final insnow:Client insuranceNow;
 
     function init() returns error? {
         self.insuranceNow = check new ({auth: {username, password}}, string `https://${guidewireDomain}/coreapi/v5`);
     }
 
-    # A resource for generating greetings
-    # + name - the input string name
-    # + return - string name with hello message or error
-    resource function get greeting(string name) returns string|error {
-        // Send a response back to the caller.
-        if name is "" {
-            return error("name should not be empty!");
-        }
-        return "Hello, " + name;
+    # Retrieves the list of previously saved insurance applications.
+    # 
+    # + customerId - The filter parameter for customer
+    # + continuationId - Indicates the starting offset for the API results
+    # + limit - The maximum number of results to return
+    # + return - List of applications or an error
+    resource function get applications(string? customerId = (), string? continuationId = (), string? 'limit = ()) returns insnow:ListApplication|error {
+        return self.insuranceNow->/applications(
+            customerId = customerId, 
+            continuationId = continuationId, 
+            'limit = 'limit
+        );
+    }
+
+    # Starts a new QuickQuote or Quote.
+    # 
+    # + quote - The insurance quote
+    # + requestedTypeCd - The type of the quote, QuickQuote or Quote
+    # + return - An error or nil
+    resource function post applications(insnow:Quote quote, string? requestedTypeCd = ()) returns error? {
+        _ = check self.insuranceNow->/applications.post(quote, requestedTypeCd);
+    }
+
+    # Adds an attachment to a quote or application.
+    # 
+    # + applicationId - System identifier of the application
+    # + attachment - The attachment
+    # + return - An error or nil
+    resource function post [string applicationId]/documents(insnow:Attachment attachment) returns error? {
+        _ = check self.insuranceNow->/applications/[applicationId]/documents.post(attachment);
+    }
+
+    # Converts a quote to an application.
+    # 
+    # + applicationId - System identifier of the application
+    # + return - An error or nil
+    resource function post [string applicationId]/convert() returns error? {
+        _ = check self.insuranceNow->/applications/[applicationId]/bindRequest.post;
     }
 }
