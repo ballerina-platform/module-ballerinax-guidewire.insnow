@@ -241,7 +241,7 @@ function testCreateApplication() returns error? {
             }
         ]
     };
-    check insuranceNow->/applications.post(quote);
+    _ = check insuranceNow->/applications.post(quote);
 }
 
 @test:Config {
@@ -282,12 +282,12 @@ function testAttachDocument() returns error? {
         ],
         templateId: "template-insurance-application"
     };
-    check insuranceNow->/applications/["123"]/documents.post(attachment);
+    _ = check insuranceNow->/applications/["123"]/documents.post(attachment);
 }
 
 @test:Config {
     groups: ["live_tests", "mock_tests"]
 }
 function testConvertQuoteToApplication() returns error? {
-    check insuranceNow->/applications/["123"]/bindRequest.post;
+    _ = check insuranceNow->/applications/["123"]/bindRequest.post;
 }
