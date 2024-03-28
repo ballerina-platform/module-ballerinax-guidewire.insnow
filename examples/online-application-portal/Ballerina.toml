@@ -1,0 +1,4 @@
+[package]
+org = "wso2"
+name = "online_application_portal"
+version = "0.1.0"
