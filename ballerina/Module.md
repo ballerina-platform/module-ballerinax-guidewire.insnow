@@ -4,6 +4,8 @@
 
 The `ballerinax/guidewire.insnow` package provides a client API to connect to Guidewire InsuranceNow cloud API using Ballerina.
 
+The Ballerina Guidewire InsuranceNow connector is compatible with the Guidewire InsuranceNow `2023.3 (Innsbruck)` version.
+
 ## Compatibility
 
 |                        |   Version    |
