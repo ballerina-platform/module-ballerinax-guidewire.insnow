@@ -32,8 +32,8 @@ configurable string password = ?;
 
 insnow:ConnectionConfig insnowConfig = {
     auth: {
-        username: username,
-        password: password
+        username,
+        password
     }
 };
 
