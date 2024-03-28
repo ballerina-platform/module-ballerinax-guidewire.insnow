@@ -30,7 +30,7 @@
     export packagePAT=<Personal access token>
     ```
 
-## OpenAPI CLI command
+### Generating the client using OpenAPI tool
 
 The following command was used to generate the Ballerina client from the OpenAPI specification. The command should be executed from the repository root directory.
 
