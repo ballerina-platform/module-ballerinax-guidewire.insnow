@@ -6,7 +6,7 @@
 
 target
 generated
-# Config file
+#Config file
 Config.toml
 # BlueJ files
 *.ctxt
