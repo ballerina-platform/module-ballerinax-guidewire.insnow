@@ -14,7 +14,6 @@
 // specific language governing permissions and limitations
 // under the License.
 
-import ballerina/constraint;
 import ballerina/http;
 
 service class ResponseErrorInterceptor {
@@ -24,7 +23,7 @@ service class ResponseErrorInterceptor {
         string path = request.rawPath;
         string method = request.method;
 
-        if err is constraint:Error {
+        if err is http:PayloadValidationError {
             return <ClientError>{
                 body: {
                     code: http:STATUS_BAD_REQUEST,
@@ -35,7 +34,7 @@ service class ResponseErrorInterceptor {
             };
         }
 
-        if err is http:ClientRequestError {
+        if err is http:ApplicationResponseError {
             http:Detail responseDetails = err.detail();
             if responseDetails.statusCode == http:STATUS_BAD_REQUEST {
                 GuidewireErrorPayload payload = check responseDetails.body.ensureType();
@@ -43,10 +42,7 @@ service class ResponseErrorInterceptor {
                     body: getResponsePayload(path, method, payload)
                 };
             }
-        }
 
-        if err is http:RemoteServerError {
-            http:Detail responseDetails = err.detail();
             if responseDetails.statusCode == http:STATUS_INTERNAL_SERVER_ERROR {
                 GuidewireErrorPayload payload = check responseDetails.body.ensureType();
                 return <ServerError>{
