@@ -2,3 +2,9 @@
 org = "wso2"
 name = "online_application_portal"
 version = "0.1.0"
+
+[[dependency]]
+org="ballerinax"
+name="guidewire.insnow"
+version="0.1.0"
+repository="local"

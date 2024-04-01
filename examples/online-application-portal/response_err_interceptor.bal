@@ -20,9 +20,9 @@ import ballerina/http;
 service class ResponseErrorInterceptor {
     *http:ResponseErrorInterceptor;
 
-    remote function interceptResponseError(http:RequestContext ctx, error err) returns ClientError|ServerError|error {
-        string path = check ctx.getWithType("rawPath");
-        string method = check ctx.getWithType("method");
+    remote function interceptResponseError(http:Request request, error err) returns ClientError|ServerError|error {
+        string path = request.rawPath;
+        string method = request.method;
 
         if err is constraint:Error {
             return <ClientError>{
