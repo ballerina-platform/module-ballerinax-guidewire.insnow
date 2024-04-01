@@ -43,7 +43,7 @@ insnow:ConnectionConfig insnowConfig = {
     }
 };
 
-insnow:Client insnow = check new (insnowConfig, "https://<your-domain>/coreapi/v5");
+insnow:Client insuranceNow = check new (insnowConfig, "https://<your-domain>/coreapi/v5");
 ```
 
 ### Step 3: Invoke the connector operations
