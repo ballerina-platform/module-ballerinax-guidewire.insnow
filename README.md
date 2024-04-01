@@ -20,7 +20,7 @@ To use the Ballerina Guidewire InsuranceNow connector, access to the Guidewire A
 
 To use the Guidewire InsuranceNow connector in your Ballerina application, modify the `.bal` file as follows:
 
-### Step 1: Import the connector
+### Step 1: Import the module
 
 Import `ballerinax/guidewire.insnow` module into your Ballerina project.
 
