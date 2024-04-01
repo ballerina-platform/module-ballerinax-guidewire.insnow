@@ -67,7 +67,7 @@ function getResponsePayload(string path, string method, GuidewireErrorPayload pa
     return {
         code: payload.code,
         message: stacktrace is () ? payload.message : string `${payload.message}:${stacktrace}`,
-        path: path,
-        method: method
+        path,
+        method
     };
 }
