@@ -33,21 +33,21 @@ service ApplicationPortal /portal on new http:Listener(9090) {
     }
 
     # Retrieves the list of previously saved insurance applications.
-    # 
+    #
     # + customerId - The filter parameter for customer
     # + continuationId - Indicates the starting offset for the API results
     # + limit - The maximum number of results to return
     # + return - List of applications or an error
     resource function get applications(string? customerId = (), string? continuationId = (), string? 'limit = ()) returns insnow:ListApplication|error {
         return self.insuranceNow->/applications(
-            customerId = customerId, 
-            continuationId = continuationId, 
+            customerId = customerId,
+            continuationId = continuationId,
             'limit = 'limit
         );
     }
 
     # Starts a new QuickQuote or Quote.
-    # 
+    #
     # + quote - The insurance quote
     # + requestedTypeCd - The type of the quote, QuickQuote or Quote
     # + return - An error or nil
@@ -56,7 +56,7 @@ service ApplicationPortal /portal on new http:Listener(9090) {
     }
 
     # Adds an attachment to a quote or application.
-    # 
+    #
     # + applicationId - System identifier of the application
     # + attachment - The attachment
     # + return - An error or nil
@@ -65,7 +65,7 @@ service ApplicationPortal /portal on new http:Listener(9090) {
     }
 
     # Converts a quote to an application.
-    # 
+    #
     # + applicationId - System identifier of the application
     # + return - An error or nil
     resource function post applications/[string applicationId]/convert() returns error? {
