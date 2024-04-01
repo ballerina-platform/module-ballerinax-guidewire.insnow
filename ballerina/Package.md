@@ -14,7 +14,7 @@ To use the Ballerina Guidewire InsuranceNow connector, access to the Guidewire A
 
 To use the Guidewire InsuranceNow connector in your Ballerina application, modify the `.bal` file as follows:
 
-### Step 1: Import the connector
+### Step 1: Import the module
 
 Import `ballerinax/guidewire.insnow` module into your Ballerina project.
 
@@ -37,7 +37,7 @@ insnow:ConnectionConfig insnowConfig = {
     }
 };
 
-insnow:Client insnow = check new (insnowConfig, "https://<your-domain>/coreapi/v5");
+insnow:Client insuranceNow = check new (insnowConfig, "https://<your-domain>/coreapi/v5");
 ```
 
 ### Step 3: Invoke the connector operations
@@ -96,3 +96,9 @@ _ = check insuranceNow->/applications/["123"]/documents.post(attachment);
 ```Shell
 bal run
 ```
+
+## Examples
+
+The Guidewire InsuranceNow connector provides practical examples illustrating usage in various scenarios. Explore these [examples](https://github.com/ballerina-platform/module-ballerinax-guidewire.insnow/tree/master/examples/), covering the following use cases:
+
+1. [Online application portal](https://github.com/ballerina-platform/module-ballerinax-guidewire.insnow/tree/main/examples/online-application-portal) - Implement an online insurance application portal using Guidewire InsuranceNow cloud API.
