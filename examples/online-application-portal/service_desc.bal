@@ -38,7 +38,7 @@ type ErrorPayload record {|
     string message;
     string path;
     string method;
-    time:Utc timeStamp = time:utcNow();
+    string timeStamp = time:utcToString(time:utcNow());
 |};
 
 type ClientError record {|
