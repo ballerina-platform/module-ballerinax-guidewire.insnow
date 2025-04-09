@@ -146,7 +146,7 @@ service / on ep0 {
         return http:OK;
     }
     
-    resource function get applications(string? applicationOrQuoteNumber, string? continuationId, string? createdSinceDate, string? customerId, boolean? includeClosed, boolean? includeDeleted, string? 'limit, string? optionalFields, string? policyId, string? providerId, boolean? recentlyViewed, string? status, string? transactionCd, string? transactionCdGroup, string? 'type) returns ListApplication {
+    resource function get applications(string? applicationOrQuoteNumber, string? continuationId, string? createdSinceDate, string? customerId, boolean? includeClosed, boolean? includeDeleted, string? 'limit, string? optionalFields, string? policyId, string? providerId, boolean? recentlyViewed, string? status, string? transactionCd, string? transactionCdGroup, string? 'type) returns json {
         return {
             applicationListItems: [
                 {
@@ -300,7 +300,7 @@ service / on ep0 {
         return http:CREATED;
     }
 
-    resource function get applications/[string systemId]/documents() returns ListDocument {
+    resource function get applications/[string systemId]/documents() returns json {
         return {
             documentListItems: [
                 {
@@ -357,7 +357,7 @@ service / on ep0 {
         return payload;
     }
 
-    resource function get claims/[string systemId]/documents() returns ListDocument {
+    resource function get claims/[string systemId]/documents() returns json {
         return {
             documentListItems: [
                 {
@@ -418,7 +418,7 @@ service / on ep0 {
         return http:CREATED;
     }
 
-    resource function get policies(string? continuationId, string? createdSinceDate, string? customerId, string? expiredDateAfter, boolean? includePriorTerms, string? 'limit, string? optionalFields, string? policyNumber, string? providerRef, boolean? recentlyViewed, string? status) returns ListPolicy {
+    resource function get policies(string? continuationId, string? createdSinceDate, string? customerId, string? expiredDateAfter, boolean? includePriorTerms, string? 'limit, string? optionalFields, string? policyNumber, string? providerRef, boolean? recentlyViewed, string? status) returns json {
         return {
             continuationId: "cont123456789",
             policyListItems: [
@@ -547,7 +547,7 @@ service / on ep0 {
         };
     }
 
-    resource function get policies/[string systemId](string? asOfDate) returns PolicyDetails {
+    resource function get policies/[string systemId](string? asOfDate) returns json {
         return {
             _links: [
                 {

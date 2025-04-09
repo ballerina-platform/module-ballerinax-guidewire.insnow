@@ -39,11 +39,12 @@ service ApplicationPortal /portal on new http:Listener(9090) {
     # + limit - The maximum number of results to return
     # + return - List of applications or an error
     resource function get applications(string? customerId = (), string? continuationId = (), string? 'limit = ()) returns insnow:ListApplication|error {
-        return self.insuranceNow->/applications(
-            customerId = customerId,
-            continuationId = continuationId,
-            'limit = 'limit
-        );
+        insnow:GetQuotesQueries queries = {
+            customerId,
+            continuationId,
+            'limit
+        };
+        return self.insuranceNow->/applications(queries = queries);
     }
 
     # Starts a new QuickQuote or Quote.
@@ -52,7 +53,10 @@ service ApplicationPortal /portal on new http:Listener(9090) {
     # + requestedTypeCd - The type of the quote, QuickQuote or Quote
     # + return - An error or nil
     resource function post applications(insnow:Quote quote, string? requestedTypeCd = ()) returns error? {
-        _ = check self.insuranceNow->/applications.post(quote, requestedTypeCd);
+        insnow:CreateQuoteQueries queries = {
+            requestedTypeCd
+        };
+        _ = check self.insuranceNow->/applications.post(quote, queries = queries);
     }
 
     # Adds an attachment to a quote or application.
