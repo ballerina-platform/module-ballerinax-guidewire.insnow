@@ -48,13 +48,13 @@ function testListApplications() returns error? {
 }
 function testCreateApplication() returns error? {
     Quote quote = {
-        _links: [
+        links: [
             {
                 href: "/api/resource/123",
                 rel: "self"
             }
         ],
-        _revision: "1",
+        revision: "1",
         applicationInfo: {
             correctedByTransactionNumber: 12345,
             correctionOfTransactionNumber: 12344,
