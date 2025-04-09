@@ -1,5 +1,5 @@
 [package]
-distribution = "2201.8.6"
+distribution = "2201.12.2"
 org = "ballerinax"
 name = "guidewire.insnow"
 version = "@toml.version@"
@@ -11,6 +11,3 @@ repository = "https://github.com/ballerina-platform/module-ballerinax-guidewire.
 
 [build-options]
 observabilityIncluded = false
-
-[platform.java17]
-graalvmCompatible = true
