@@ -17,6 +17,7 @@
 // specific language governing permissions and limitations
 // under the License.
 
+import ballerina/data.jsondata;
 import ballerina/http;
 
 # This OpenAPI specification outlines the interface for the Guidewire InsuranceNow Cloud API version 5.0.0, providing a comprehensive description of available endpoints, operations, parameters, request bodies, and response structures for integrating with the cloud-based insurance platform, InsuranceNow. Designed to streamline operations for insurance companies, InsuranceNow offers functionalities including policy management, claims management, and customer engagement. The API enables developers to access and manipulate insurance data, facilitating automation, custom integrations, and workflow enhancements. Key features include policy management, claims processing, and customer management.
@@ -71,7 +72,7 @@ public isolated client class Client {
     resource isolated function post addresses/isVerifiedRequest(Address payload, map<string|string[]> headers = {}) returns error? {
         string resourcePath = string `/addresses/isVerifiedRequest`;
         http:Request request = new;
-        json jsonBody = payload.toJson();
+        json jsonBody = jsondata:toJson(payload);
         request.setPayload(jsonBody, "application/json");
         return self.clientEp->post(resourcePath, request, headers);
     }
@@ -85,7 +86,7 @@ public isolated client class Client {
         string resourcePath = string `/addresses/verificationRequest`;
         resourcePath = resourcePath + check getPathForQueryParam(queries);
         http:Request request = new;
-        json jsonBody = payload.toJson();
+        json jsonBody = jsondata:toJson(payload);
         request.setPayload(jsonBody, "application/json");
         return self.clientEp->post(resourcePath, request, headers);
     }
@@ -110,7 +111,7 @@ public isolated client class Client {
         string resourcePath = string `/applications`;
         resourcePath = resourcePath + check getPathForQueryParam(queries);
         http:Request request = new;
-        json jsonBody = payload.toJson();
+        json jsonBody = jsondata:toJson(payload);
         request.setPayload(jsonBody, "application/json");
         return self.clientEp->post(resourcePath, request, headers);
     }
@@ -165,7 +166,7 @@ public isolated client class Client {
     resource isolated function post applications/[string systemId]/documents(Attachment payload, map<string|string[]> headers = {}) returns error? {
         string resourcePath = string `/applications/${getEncodedUri(systemId)}/documents`;
         http:Request request = new;
-        json jsonBody = payload.toJson();
+        json jsonBody = jsondata:toJson(payload);
         request.setPayload(jsonBody, "application/json");
         return self.clientEp->post(resourcePath, request, headers);
     }
@@ -212,7 +213,7 @@ public isolated client class Client {
     resource isolated function post applications/[string systemId]/drivers(Driver payload, map<string|string[]> headers = {}) returns error? {
         string resourcePath = string `/applications/${getEncodedUri(systemId)}/drivers`;
         http:Request request = new;
-        json jsonBody = payload.toJson();
+        json jsonBody = jsondata:toJson(payload);
         request.setPayload(jsonBody, "application/json");
         return self.clientEp->post(resourcePath, request, headers);
     }
@@ -237,7 +238,7 @@ public isolated client class Client {
     resource isolated function put applications/[string systemId]/drivers/[int:Signed32 driverNumber](Driver payload, map<string|string[]> headers = {}) returns Driver|error {
         string resourcePath = string `/applications/${getEncodedUri(systemId)}/drivers/${getEncodedUri(driverNumber)}`;
         http:Request request = new;
-        json jsonBody = payload.toJson();
+        json jsonBody = jsondata:toJson(payload);
         request.setPayload(jsonBody, "application/json");
         return self.clientEp->put(resourcePath, request, headers);
     }
@@ -262,7 +263,7 @@ public isolated client class Client {
     resource isolated function patch applications/[string systemId]/drivers/[int:Signed32 driverNumber](Driver payload, map<string|string[]> headers = {}) returns Driver|error {
         string resourcePath = string `/applications/${getEncodedUri(systemId)}/drivers/${getEncodedUri(driverNumber)}`;
         http:Request request = new;
-        json jsonBody = payload.toJson();
+        json jsonBody = jsondata:toJson(payload);
         request.setPayload(jsonBody, "application/json");
         return self.clientEp->patch(resourcePath, request, headers);
     }
@@ -285,7 +286,7 @@ public isolated client class Client {
     resource isolated function post claims/[string systemId]/documents(DocumentDetail payload, map<string|string[]> headers = {}) returns error? {
         string resourcePath = string `/claims/${getEncodedUri(systemId)}/documents`;
         http:Request request = new;
-        json jsonBody = payload.toJson();
+        json jsonBody = jsondata:toJson(payload);
         request.setPayload(jsonBody, "application/json");
         return self.clientEp->post(resourcePath, request, headers);
     }
@@ -308,7 +309,7 @@ public isolated client class Client {
     resource isolated function post claims/[string systemId]/notes(NoteDetail payload, map<string|string[]> headers = {}) returns error? {
         string resourcePath = string `/claims/${getEncodedUri(systemId)}/notes`;
         http:Request request = new;
-        json jsonBody = payload.toJson();
+        json jsonBody = jsondata:toJson(payload);
         request.setPayload(jsonBody, "application/json");
         return self.clientEp->post(resourcePath, request, headers);
     }
@@ -344,7 +345,7 @@ public isolated client class Client {
     resource isolated function patch policies/[string systemId](PolicyDetails payload, map<string|string[]> headers = {}) returns PolicyDetails|error {
         string resourcePath = string `/policies/${getEncodedUri(systemId)}`;
         http:Request request = new;
-        json jsonBody = payload.toJson();
+        json jsonBody = jsondata:toJson(payload);
         request.setPayload(jsonBody, "application/json");
         return self.clientEp->patch(resourcePath, request, headers);
     }
