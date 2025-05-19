@@ -22,13 +22,16 @@ import ballerina/http;
 
 # Represents a comprehensive view of an insurance policy, including customer details, policy specifics, associated contacts, and system references. It's designed to encapsulate all relevant information about a policy, facilitating easy access and management within the system
 public type Policy record {
+    # Provides a condensed overview of policy information, including key attributes and links for deeper exploration
     PolicyMini policyMini?;
     # A general reference identifier for the policy item, usable for cross-referencing or linkage
     string ref?;
     # Hypermedia links associated with the policy item, providing navigational URLs to related resources
     @jsondata:Name {value: "_links"}
     Link[] links?;
+    # Captures essential identification and reference information for a customer, supporting customer management, service, and correspondence within the insurance system
     CustomerInfo customerInfo?;
+    # Provides key details about an insurance product, including its identification and descriptive name, facilitating product-specific processing and categorization
     ProductInfo productInfo?;
 };
 
@@ -108,6 +111,7 @@ public type PolicyMini record {
     string systemId?;
     # Indicator for the association of the policy with an external system, highlighting integrations or external dependencies
     string externalSystemInd?;
+    # Represents an insured entity or individual within the system, encompassing both basic identification and specific insurance-related information
     Insured insured?;
     # Reference to the statement account related to the policy, used for financial transactions and billing
     string statementAccountRef?;
@@ -118,6 +122,7 @@ public type PolicyMini record {
     string version?;
     # Indicates the VIP level of the policy or associated customer, used for service prioritization or benefits
     string vipLevel?;
+    # Summarizes foundational information about a policy, including its identification, associated affinity group, and details about its payment plan
     BasicPolicy basicPolicy?;
     # A reference to the customer associated with the policy, enabling linkage to detailed customer information
     string customerRef?;
@@ -241,6 +246,7 @@ public type Address record {
 
 # Defines the payment plan for a policy as adjusted following an audit, which may result in changes to payment schedules or methods based on the audited information
 public type AuditPayPlan record {
+    # Defines the details of an electronic payment source, such as bank account or credit card information, used for processing payments within the system. It includes both ACH (Automated Clearing House) and credit card payment methods
     ElectronicPaymentSource electronicPaymentSource?;
     # Indicates the adjusted day of the month for payment due dates under the audited payment plan, which may have been modified from the original schedule
     string paymentDay?;
@@ -256,6 +262,7 @@ public type AuditPayPlan record {
 public type Attachment record {
     # The storage path and unique filename under which the attachment is saved on the server, crucial for retrieval and management
     string filename?;
+    # Contains details regarding the erasure of data, including who performed the erasure, when it was done, and the specific item erased, ensuring compliance with data protection and privacy regulations
     EraseInfo eraseInfo?;
     # A user or system-provided description of the attachment, often detailing its content, purpose, or any relevant context
     string description?;
@@ -439,6 +446,7 @@ public type PolicyDetails record {
     int updateCount?;
     # Indicator flag signifying if the policy is synchronized with an external system
     string externalSystemInd?;
+    # Represents an insured entity or individual within the system, encompassing both basic identification and specific insurance-related information
     Insured insured?;
     # Reference identifier for the account associated with billing statements for the policy
     string statementAccountRef?;
@@ -455,6 +463,7 @@ public type PolicyDetails record {
     string updateTimestamp?;
     # The VIP level assigned to the policy or policyholder, indicating priority or special handling requirements
     string vipLevel?;
+    # Summarizes foundational information about a policy, including its identification, associated affinity group, and details about its payment plan
     BasicPolicy basicPolicy?;
     # A reference identifier for the customer associated with the policy
     string customerRef?;
@@ -553,7 +562,9 @@ public type ApplicationMini record {
     Link[] links?;
     # The unique identifier assigned to the application, serving as a primary reference for tracking and management throughout the application process
     string applicationNumber?;
+    # Summarizes foundational information about a policy, including its identification, associated affinity group, and details about its payment plan
     BasicPolicy basicPolicy?;
+    # Encapsulates a detailed record of an insurance application's lifecycle within the system, tracking its creation, updates, mailing history, closure, and any related correction or reinstatement transactions
     ApplicationInfo applicationInfo?;
     # A reference identifier linking the application to its associated audit account, facilitating financial tracking and audit processes
     string auditAccountRef?;
@@ -569,6 +580,7 @@ public type VerifyAddressQueries record {
 public type ElectronicPaymentSource record {
     # Message providing additional details regarding credit card authorization status or any associated messages
     string creditCardAuthorizationMessage?;
+    # Contains details regarding the erasure of data, including who performed the erasure, when it was done, and the specific item erased, ensuring compliance with data protection and privacy regulations
     EraseInfo eraseInfo?;
     # Indicates whether the payment source is an agent's trust account, differentiating it from customer-owned accounts
     boolean agentTrustInd?;
@@ -606,6 +618,7 @@ public type ElectronicPaymentSource record {
     string creditCardSecurityCd?;
     # An identifier for the customer's payment profile, allowing for the reuse of stored payment information in a secure manner
     string customerPaymentProfileId?;
+    # Encapsulates comprehensive information about a party involved in the insurance process, including personal, business, and contact details, facilitating holistic management and communication
     PartyInfo partyInfo?;
     # An identifier linking the electronic payment source to a customer profile, facilitating comprehensive customer payment management
     string customerProfileId?;
@@ -881,6 +894,7 @@ public type Country record {
 
 # Provides an in-depth view of a note, including its content, priority, and associated metadata, facilitating detailed documentation and tracking within the system
 public type NoteDetail record {
+    # Contains details regarding the erasure of data, including who performed the erasure, when it was done, and the specific item erased, ensuring compliance with data protection and privacy regulations
     EraseInfo eraseInfo?;
     # A code indicating the note's priority level, such as 'High', 'Medium', or 'Low', guiding attention and response urgency
     string priorityCd?;
@@ -926,6 +940,7 @@ public type CustomerInfo record {
 
 # Detailed representation of an insurance application, including its status, ownership, associated customer and product information, and permissions regarding user actions
 public type Application record {
+    # Provides a compact overview of an insurance application, summarizing key information and linking to detailed resources for further exploration. This schema is optimized for quick access and overview purposes
     ApplicationMini applicationMini?;
     # A unique reference identifier for the application, used within the system for tracking, management, and retrieval purposes
     string ref?;
@@ -938,7 +953,9 @@ public type Application record {
     boolean canEdit?;
     # Identifies the current owner or responsible party for the application, which may be an individual agent or a team within the insurance organization
     string currentOwner?;
+    # Captures essential identification and reference information for a customer, supporting customer management, service, and correspondence within the insurance system
     CustomerInfo customerInfo?;
+    # Provides key details about an insurance product, including its identification and descriptive name, facilitating product-specific processing and categorization
     ProductInfo productInfo?;
 };
 
@@ -1036,18 +1053,23 @@ public type Driver record {
     # A collection of hypermedia links related to the driver, providing quick access to related resources and actions such as fetching detailed information or initiating workflows
     @jsondata:Name {value: "_links"}
     Link[] links?;
+    # Contains details regarding the erasure of data, including who performed the erasure, when it was done, and the specific item erased, ensuring compliance with data protection and privacy regulations
     EraseInfo eraseInfo?;
+    # Captures comprehensive details about an individual's or entity's name, accommodating various name formats and types to support a wide range of commercial and personal naming conventions
     NameInfo nameInfo?;
     # A categorization field that identifies the nature of the party's relationship to the policy or entity, with 'ContactParty' denoting direct contact or relation
     string partyTypeCd = "ContactParty";
     # A list of issues or points of concern related to the driver, such as incidents or violations, that may affect insurance considerations
     Issue[] issues?;
+    # Encapsulates a comprehensive set of personal details for an individual, covering demographic information, contact preferences, professional background, and licensing history, facilitating tailored interactions and personalized insurance services
     PersonInfo personInfo?;
     # A reference to the geographical location or area associated with the driver, potentially relevant for policies with geographical considerations such as Personal Umbrella policies
     string locationIdRef?;
+    # Captures comprehensive personal and professional details about a driver, including driving history, license information, and eligibility for various insurance benefits based on driving qualifications and courses completed
     DriverPersonalInfo driverInfo?;
     # Represents the number of years the driver has been associated with the insurance provider or specific policy, possibly impacting considerations such as loyalty discounts or risk assessments
     int yearsOfService?;
+    # Details an individual's email contact information, including type and preference status, facilitating communication and documentation processes
     EmailInfo emailInfo?;
     # An array detailing the phone contact information associated with the driver, facilitating various forms of communication
     PhoneInfo[] phoneInfo?;
@@ -1055,6 +1077,7 @@ public type Driver record {
     string futureStatusCd?;
     # A unique identifier for the driver, used to reference and manage driver information within the system
     string id?;
+    # Encapsulates responses to a set of predefined questions, typically used in underwriting or claim processes, to gather necessary information in a structured format
     QuestionReplies questionReplies?;
     # A reference to the specific insurance policy ID that this driver is associated with, highlighting the connection to policy structures and coverages
     string underLyingPolicyIdRef?;
@@ -1166,6 +1189,7 @@ public type TransactionInfo record {
     int reinstatedByTransactionNumber?;
     # A detailed description of the transaction, offering insights into its purpose, scope, and impact on the policy or customer
     string transactionLongDescription?;
+    # Defines the details of an electronic payment source, such as bank account or credit card information, used for processing payments within the system. It includes both ACH (Automated Clearing House) and credit card payment methods
     ElectronicPaymentSource electronicPaymentSource?;
     # Code identifying who requested the cancellation, providing insight into the source of the transaction
     string cancelRequestedByCd?;
@@ -1195,6 +1219,7 @@ public type ESignatureInfo record {
 public type ListDriver record {
     # A unique identifier that can be used to request subsequent pages of drivers. This value represents the row index from which the next set of results should start, facilitating pagination in client applications
     string continuationId?;
+    # Detailed representation of a driver or potential driver, encompassing personal information, contact details, associated addresses, and other relevant information that pertains to their role and status within insurance policies
     Driver drivers?;
 };
 
@@ -1294,6 +1319,7 @@ public type BasicPolicy record {
     boolean wcARDRuleEnabled?;
     # The code representing the group of insurance carriers, if applicable, under which the policy is issued
     string carrierGroupCd?;
+    # Encapsulates detailed information regarding an umbrella insurance policy within the Guidewire InsuranceNow system. This schema is designed to capture and organize key identifiers and attributes of an umbrella policy, facilitating effective policy management, identification, and reference across the platform. It serves as a foundational element for operations such as policy lookup, modification, and integration with related insurance processes, ensuring a coherent and unified approach to managing umbrella policies
     UmbrellaPolicyInfo umbrellaPolicyInfo?;
     # Indicator of whether commercial auto line coverage is selected in the policy
     boolean cALineSelectedInd?;
@@ -1331,6 +1357,7 @@ public type BasicPolicy record {
     string externalId?;
     # The product code of the company, identifying the specific insurance product offered
     string companyProductCd?;
+    # Defines the payment plan for a policy as adjusted following an audit, which may result in changes to payment schedules or methods based on the audited information
     AuditPayPlan auditPayPlan?;
     # Indicator of whether commercial package policy coverage is selected
     boolean cPLineSelectedInd?;
@@ -1344,6 +1371,7 @@ public type BasicPolicy record {
     string lossSettlementType?;
     # A reference identifier for the provider or originator of the policy, such as an agent, broker, or direct application system
     string providerRef?;
+    # Defines the details of an electronic payment source, such as bank account or credit card information, used for processing payments within the system. It includes both ACH (Automated Clearing House) and credit card payment methods
     ElectronicPaymentSource electronicPaymentSource?;
     # The code for any promotional offers or discounts applied to the policy, used for marketing and billing purposes
     string promotionCd?;
@@ -1579,6 +1607,7 @@ public type TransactionDetails record {
     int correctionOfTransactionNumber?;
     # Long description of the transaction
     string transactionLongDescription?;
+    # Reasons for the closure of a transaction
     TransactionCloseReasons transactionCloseReasons?;
     # Total net locations manual premium amount for workers compensation
     string wcTotalNetLocationsManualPremiumAmt?;
@@ -1664,24 +1693,33 @@ public type TransactionDetails record {
 public type PartyInfo record {
     # A list of addresses associated with the party, detailing physical locations for billing, correspondence, or property coverage
     Address[] addresses?;
+    # Contains details regarding the erasure of data, including who performed the erasure, when it was done, and the specific item erased, ensuring compliance with data protection and privacy regulations
     EraseInfo eraseInfo?;
+    # Captures comprehensive details about an individual's or entity's name, accommodating various name formats and types to support a wide range of commercial and personal naming conventions
     NameInfo nameInfo?;
     # A code indicating the type of party (e.g., individual, corporation), aiding in classification and process differentiation
     string partyTypeCd?;
+    # Encapsulates a comprehensive set of personal details for an individual, covering demographic information, contact preferences, professional background, and licensing history, facilitating tailored interactions and personalized insurance services
     PersonInfo personInfo?;
+    # Details the business-related aspects of a party, including financial, operational, and classification information, tailored for commercial insurance contexts
     BusinessInfo businessInfo?;
     # Reference to a specific location associated with the party, often used for underwriting or claims purposes
     string locationIdRef?;
+    # Encapsulates tax identification information for an individual or entity, including tax ID numbers, legal entity classification, and documentation status, essential for compliance and financial reporting
     TaxInfo taxInfo?;
+    # Captures comprehensive driving-related information for an individual, including licensing details, driving history, and eligibility for discounts based on driving courses and behavior
     DriverInfo driverInfo?;
+    # Contains information related to electronic signatures, including the type of signature, recipient category, and signing methodology, facilitating digital document execution and verification
     ESignatureInfo eSignatureInfo?;
     # The number of years the party has been associated with services or policies within the system, indicating tenure or loyalty
     int yearsOfService?;
+    # Details an individual's email contact information, including type and preference status, facilitating communication and documentation processes
     EmailInfo emailInfo?;
     # A collection of phone numbers for the party, covering different types, purposes, and preferences
     PhoneInfo[] phoneInfo?;
     # A unique identifier for the party record within the system, ensuring accurate reference and integration across processes
     string id?;
+    # Encapsulates responses to a set of predefined questions, typically used in underwriting or claim processes, to gather necessary information in a structured format
     QuestionReplies questionReplies?;
     # A reference to an underlying policy associated with the party, establishing connections for coverage, claims, or account management
     string underLyingPolicyIdRef?;
@@ -1695,6 +1733,7 @@ public type PartyInfo record {
 public type Contact record {
     # A code that categorizes the contact by their relationship or role, such as 'Agent', 'Insured', or 'Claimant', aiding in context-specific communication and processes
     string contactTypeCd?;
+    # Encapsulates comprehensive information about a party involved in the insurance process, including personal, business, and contact details, facilitating holistic management and communication
     PartyInfo partyInfo?;
     # Specifies the contact's preferred method for receiving communications, such as 'Email', 'Paper Mail', or 'SMS', ensuring compliance with their preferences
     string preferredDeliveryMethod?;
@@ -1721,6 +1760,7 @@ public type Quote record {
     # A system-generated version identifier for the quote, used to manage updates and ensure data integrity through optimistic concurrency control
     @jsondata:Name {value: "_revision"}
     string revision?;
+    # Represents an insured entity or individual within the system, encompassing both basic identification and specific insurance-related information
     Insured insured?;
     # A reference to the statement account associated with this quote, used for billing and financial transactions related to the policy
     string statementAccountRef?;
@@ -1737,16 +1777,19 @@ public type Quote record {
     SubmitterIssue[] submitterIssues?;
     # A reference identifier linking the quote to a specific policy or policy proposal, establishing a connection between quoting and policy issuance
     string policyRef?;
+    # Captures detailed information related to a specific transaction within the policy lifecycle, including cancellations, corrections, payments, and policy term adjustments, among others
     TransactionInfo transactionInfo?;
     # An identifier for a system task or process that has locked the quote for exclusive access, preventing concurrent modifications
     string lockTaskId?;
     # Indicates the VIP level or priority of the quote, which may affect processing speed, service levels, or access to special pricing
     string vipLevel?;
+    # Summarizes foundational information about a policy, including its identification, associated affinity group, and details about its payment plan
     BasicPolicy basicPolicy?;
     # A reference identifier linking the quote to a customer record, enabling correlation between customer details and quotation data
     string customerRef?;
     # The unique identifier for the quote, facilitating tracking, management, and retrieval within the system
     string id?;
+    # Encapsulates a detailed record of an insurance application's lifecycle within the system, tracking its creation, updates, mailing history, closure, and any related correction or reinstatement transactions
     ApplicationInfo applicationInfo?;
     # A list of contacts associated with the quote, including individuals or entities involved in the policy as insureds, beneficiaries, or other roles
     Contact[] contacts?;
@@ -1756,6 +1799,7 @@ public type Quote record {
 
 # Details an additional insured entity or individual on a workers' compensation policy, providing key identification and insurance-related information
 public type WCAdditionalInsured record {
+    # Encapsulates comprehensive information about a party involved in the insurance process, including personal, business, and contact details, facilitating holistic management and communication
     PartyInfo partyInfo?;
     # An array of InsuranceScore objects that provide scoring or rating information related to the additional insured, used in underwriting and risk assessment
     InsuranceScore[] insuranceScore?;
@@ -1837,6 +1881,7 @@ public type QuestionReply record {
 public type DocumentDetail record {
     # The name of the file as stored within the system, including extension, facilitating file identification and access
     string filename?;
+    # Contains details regarding the erasure of data, including who performed the erasure, when it was done, and the specific item erased, ensuring compliance with data protection and privacy regulations
     EraseInfo eraseInfo?;
     # A textual summary of the document's content or purpose, aiding in identification and categorization
     string description?;
@@ -1868,6 +1913,7 @@ public type Tag record {
 
 # Defines the template for constructing and validating addresses within a specific country. This schema includes details like the required fields, address format, and labels for various address components, tailored to the country's postal system
 public type AddressCountryTemplate record {
+    # Provides a structured format for representing state or province information associated with addresses, facilitating consistency and accuracy in address data across various geographic locations
     AddressStateProvinceTemplates addressStateProvinceTemplates?;
     # A regular expression pattern used to validate the format of postal or zip codes for addresses in this country, ensuring data accuracy and compliance with local postal standards
     string postalCodeRegex?;
