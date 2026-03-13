@@ -5,7 +5,7 @@ name = "guidewire.insnow"
 version = "0.2.0"
 license = ["Apache-2.0"]
 authors = ["Ballerina"]
-keywords = ["Insurance", "Guidewire", "Cloud API"]
+keywords = ["ERP/Insurance", "Cost/Paid", "Vendor/Guidewire", "Area/ERP & Business Operations", "Type/Connector"]
 icon = "icon.png"
 repository = "https://github.com/ballerina-platform/module-ballerinax-guidewire.insnow"
 
