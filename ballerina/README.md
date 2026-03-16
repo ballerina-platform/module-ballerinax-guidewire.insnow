@@ -1,10 +1,15 @@
-## Package overview
+## Overview
 
 [Guidewire InsuranceNow](https://www.guidewire.com/products/insurancenow) is a cloud-based insurance platform offering comprehensive tools for policy, billing, and claims management, designed to streamline operations and improve customer service in the insurance industry.
 
-The `ballerinax/guidewire.insnow` package provides a client API to connect to Guidewire InsuranceNow cloud API using Ballerina.
+The Guidewire InsuranceNow connector provides a client API to connect to Guidewire InsuranceNow cloud API. It is compatible with the Guidewire InsuranceNow [`2023.3 (Innsbruck)`](https://docs.guidewire.com/cloud/in/20233/apiref/) REST API version.
 
-The Ballerina Guidewire InsuranceNow connector is compatible with the Guidewire InsuranceNow [`2023.3 (Innsbruck)`](https://docs.guidewire.com/cloud/in/20233/apiref/) REST API version.
+### Key Features
+
+- Comprehensive tools for policy, billing, and claims management
+- Client API for connecting to Guidewire InsuranceNow cloud API
+- Streamline operations and improve customer service
+- Compatible with 2023.3 (Innsbruck) REST API version
 
 ## Setup guide
 
